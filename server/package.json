@@ -1,0 +1,22 @@
+{
+	"name": "mousequest",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.1.0",
+		"morgan": "^1.10.0",
+		"serve-favicon": "^2.5.0"
+	},
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"eslintConfig": {
+		"extends": [
+			"eslint:recommend"
+		]
+	}
+}
