@@ -4,11 +4,10 @@ import AddTaskForm from "../AddTaskForm/AddTaskForm"
 
 
 export default function NewQuestForm() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<string[]>([]);
 
-  function addTask(task) {
+  function addTask(task: string) {
     setTasks([...tasks, task]);
-
   }
 
   return (

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
-export default function AddTaskForm({addTask}) {
+interface Props {
+  addTask: (task: string) => void,
+}
+
+export default function AddTaskForm({addTask}: Props) {
   const [description, setDescription] = useState("");
 
-  function handleAddTask(evt) {
+  function handleAddTask(evt: FormEvent) {
     evt.preventDefault();
     addTask(description);
     setDescription("");

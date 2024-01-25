@@ -1,7 +1,11 @@
 import TaskItem from "../TaskItem/TaskItem"
 
-export default function NewQuestTaskList({tasks}) {
-  const taskListItems = tasks.map((task, idx) => 
+interface Props {
+  tasks: string[],
+}
+
+export default function NewQuestTaskList({tasks}: Props ) {
+  const taskListItems = tasks.map((task: string, idx: number) => 
     <TaskItem key={idx} seq={idx + 1} task={task} />
   )
   return (
