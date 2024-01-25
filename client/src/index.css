@@ -9,9 +9,13 @@
 }
 
 .mq-title {
-  @apply text-2xl font-black uppercase tracking-widest;
+  @apply text-3xl font-black uppercase tracking-widest;
 }
 
 .active {
-  @apply fill-mq-purple text-mq-purple font-bold;
+  @apply fill-mq-purple text-mq-purple transition duration-200;
+}
+
+.btn {
+  @apply my-5 bg-mq-purple px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest;
 }

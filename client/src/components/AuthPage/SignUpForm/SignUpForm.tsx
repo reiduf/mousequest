@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { User, signUp } from '../../utilities/users-service';
+import { User, signUp } from '../../../utilities/users-service';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {

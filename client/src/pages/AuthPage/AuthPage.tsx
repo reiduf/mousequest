@@ -1,5 +1,5 @@
-import LoginForm from "../../components/LoginForm/LoginForm";
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import LoginForm from "../../components/AuthPage/LoginForm/LoginForm";
+import SignUpForm from "../../components/AuthPage/SignUpForm/SignUpForm";
 import { User } from "../../utilities/users-service";
 
 interface Props {
