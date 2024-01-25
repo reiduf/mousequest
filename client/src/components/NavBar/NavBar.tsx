@@ -20,7 +20,7 @@ export default function NavBar({user, setUser}: Props) {
   const linkStyle = "uppercase tracking-wide text-xs flex flex-col justify-center items-center gap-2 font-semibold"
 
   return (
-    <nav className="py-4 text-center lg:px-14 px-2 flex justify-center lg:justify-between fixed lg:relative bottom-0 left-0 right-0 bg-white" >
+    <nav className="py-3 text-center lg:px-14 px-2 flex justify-center lg:justify-between fixed lg:relative bottom-0 left-0 right-0 bg-white lg:border-0 border-t border-slate-300" >
       <Link className={`${linkStyle} hidden lg:block`} to="/quests"><Logo /></Link>
 
       <div className="flex gap-5 lg:gap-12">
