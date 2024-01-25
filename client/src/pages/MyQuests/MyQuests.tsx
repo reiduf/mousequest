@@ -1,7 +1,9 @@
 export default function MyQuests() {
   return (
     <main className="mq-bg">
-      <h1 className="mq-title">My Quests</h1>
+      <div className="flex justify-center">
+        <h1 className="mq-title">My Quests</h1>
+      </div>
     </main>
   )
 }

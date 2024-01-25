@@ -1,4 +1,4 @@
-import { checkToken } from '../../utilities/users-service'
+// import { checkToken } from '../../utilities/users-service'
 
 export default function FindQuests() {
   
@@ -9,7 +9,9 @@ export default function FindQuests() {
   
   return (
     <main className="mq-bg">
-      <h1 className="mq-title">Find Quests</h1>
+      <div className="flex justify-center">
+        <h1 className="mq-title">Find Quests</h1>
+      </div>
     </main>
   );
 }

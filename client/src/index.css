@@ -5,9 +5,13 @@
 @tailwind utilities;
 
 .mq-bg {
-  @apply p-5 h-screen bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue;
+  @apply overflow-scroll p-5 pt-8 h-screen bg-gradient-to-b from-mq-purple to-mq-blue;
 }
 
 .mq-title {
   @apply text-2xl font-black uppercase tracking-widest;
+}
+
+.active {
+  @apply fill-mq-purple text-mq-purple font-bold;
 }
