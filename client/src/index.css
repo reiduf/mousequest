@@ -3,3 +3,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mq-bg {
+  @apply p-5 h-screen bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue;
+}
+
+.mq-title {
+  @apply text-2xl font-black uppercase tracking-widest;
+}

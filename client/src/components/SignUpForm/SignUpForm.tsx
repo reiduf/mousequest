@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { User, signUp } from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   setUser: (user: User | null) => void,
@@ -13,6 +14,7 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
     confirm: "",
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const disable = formData.password !== formData.confirm;
 
@@ -32,6 +34,7 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
       delete submittedData.confirm;
       const user = await signUp(formData)
       setUser(user)
+      navigate('/quests');
     } catch {
       setError('Sign Up Failed - Try Again');
     }

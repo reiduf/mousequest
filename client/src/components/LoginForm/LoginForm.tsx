@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   setUser: (user: usersService.User) => void;
@@ -11,6 +12,7 @@ export default function LoginForm({ setUser }: Props) {
     password: ''
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     setCredentials({ 
@@ -29,6 +31,7 @@ export default function LoginForm({ setUser }: Props) {
       // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
       setUser(user);
+      navigate('/quests');
     } catch {
       setError('Log In Failed - Try Again');
     }
@@ -41,7 +44,7 @@ export default function LoginForm({ setUser }: Props) {
   return (
     <div className="w-1/3">
       <form className="flex flex-col text-center" autoComplete="off" onSubmit={handleSubmit}>
-      <h2 className="text-3xl font-semibold">Log-In</h2>
+        <h2 className="text-3xl font-semibold">Log-In</h2>
         <hr className="my-4 mb-7"/>
         <label className={labelStyle}>Email</label>
         <input className={inputStyle} type="text" name="email" value={credentials.email} onChange={handleChange} required />
