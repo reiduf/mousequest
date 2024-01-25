@@ -21,8 +21,8 @@ export default function NewQuestForm() {
       </form> */}
 
       
-      <NewQuestTaskList tasks={tasks}/>
       <AddTaskForm addTask={addTask} />
+      <NewQuestTaskList tasks={tasks}/>
     </main>
   )
 }
