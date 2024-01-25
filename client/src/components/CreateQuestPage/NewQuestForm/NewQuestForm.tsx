@@ -4,7 +4,12 @@ import AddTaskForm from "../AddTaskForm/AddTaskForm"
 
 
 export default function NewQuestForm() {
-  const [tasks, setTasks] = useState([""]);
+  const [tasks, setTasks] = useState([]);
+
+  function addTask(task) {
+    setTasks([...tasks, task]);
+
+  }
 
   return (
     <main className="flex flex-col justify-center items-center">
@@ -17,7 +22,7 @@ export default function NewQuestForm() {
 
       
       <NewQuestTaskList tasks={tasks}/>
-      <AddTaskForm setTasks={setTasks} />
+      <AddTaskForm addTask={addTask} />
     </main>
   )
 }

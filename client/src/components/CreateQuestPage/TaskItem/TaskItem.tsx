@@ -1,7 +1,9 @@
-export default function TaskItem({task, key}) {
+
+
+export default function TaskItem({task, seq}) {
   return (
-      <li>
-        <h3>Task # {key + 1}</h3>
+      <li className="bg-white p-3">
+        <h3>Task #{seq}</h3>
         <p>{task}</p>
       </li>
 
