@@ -28,7 +28,7 @@ function App() {
             <Route path="/quests/:questId" element={<QuestDetail />} />
             <Route path="/quests/new" element={<CreateQuest />} />
             <Route path="/quests/myquests" element={<MyQuests />} />
-            <Route path="/myprofile" element={<MyProfile />} />
+            <Route path="/myprofile" element={<MyProfile user={user} />} />
           </Routes>
         </>
         :

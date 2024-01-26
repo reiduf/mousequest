@@ -55,7 +55,7 @@ export default function NewQuestForm() {
   return (
     <main className="flex flex-col justify-center items-center">
 
-      <label className="font-black uppercase tracking-wider mb-2 mt-8" htmlFor="">Quest Title</label>
+      <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">Quest Title</label>
       <input 
         placeholder="Quest title..." 
         className="font-bold p-3 mb-3 text-center rounded-md w-full 2xl:w-1/3 md:w-1/2" 
