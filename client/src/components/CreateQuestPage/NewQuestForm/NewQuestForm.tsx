@@ -2,6 +2,7 @@ import { useState } from "react";
 import NewQuestTaskList from "../NewQuestTaskList/NewQuestTaskList";
 import AddTaskForm from "../AddTaskForm/AddTaskForm"
 import TagCheckbox from "../TagCheckbox/TagCheckbox"
+import * as questService from "../../../utilities/quest-service"
 
 
 export default function NewQuestForm() {
@@ -20,6 +21,7 @@ export default function NewQuestForm() {
     hard: false,
     mickeys: false,
     queue: false,
+    riddles: false,
   })
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
@@ -32,6 +34,16 @@ export default function NewQuestForm() {
 
   function addTask(task: string) {
     setTasks([...tasks, task]);
+  }
+
+  async function handleCreate() {
+    const questData = {
+      title,
+      description: questDesc,
+      tags,
+      tasks,
+    }
+    await questService.createQuest(questData);
   }
 
   return (
@@ -69,9 +81,18 @@ export default function NewQuestForm() {
         <TagCheckbox onChange={handleChange} checked={tags.hard} name="hard" label="Hard quests" />
         <TagCheckbox onChange={handleChange} checked={tags.mickeys} name="mickeys" label="Hidden mickey's" />
         <TagCheckbox onChange={handleChange} checked={tags.queue} name="queue" label="Queue Line Quests" />
+        <TagCheckbox onChange={handleChange} checked={tags.queue} name="riddles" label="Riddles" />
       </fieldset>
       <div className="my-4 w-full 2xl:w-1/3 md:w-1/2 text-center">
         <AddTaskForm addTask={addTask} />
+        {tasks.length >= 3 && 
+          <button 
+            className="bg-mq-purple px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest w-1/2 mb-8 mx-auto font-bold" 
+            onClick={handleCreate}
+          >
+            Create Quest
+          </button>
+        }
         <NewQuestTaskList tasks={tasks}/>
       </div>
     </main>
