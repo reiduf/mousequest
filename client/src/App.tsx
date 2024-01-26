@@ -21,7 +21,7 @@ function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <header className="lg:hidden order-1 p-1 flex justify-center items-center">
-            <Link to="/quests"><Logo /></Link>
+            <Link className="py-2" to="/quests"><Logo /></Link>
           </header>
           <Routes>
             <Route path="/quests" element={<FindQuests />} />

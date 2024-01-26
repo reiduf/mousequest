@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import {Link, NavLink } from 'react-router-dom';
 import * as userService from '../../utilities/users-service'
-import Logo from "../../assets/logo.svg?react"
+import Logo from "../../assets/logo-new.svg?react"
 
 
 interface Props {
@@ -21,7 +21,7 @@ export default function NavBar({user, setUser}: Props) {
 
   return (
     <nav className="py-3 text-center lg:px-14 px-2 flex justify-center lg:justify-between fixed lg:relative bottom-0 left-0 right-0 bg-white lg:border-0 border-t border-slate-300 z-10" >
-      <Link className={`${linkStyle} hidden lg:block`} to="/quests"><Logo /></Link>
+      <Link className={`${linkStyle} hidden lg:flex lg:items-center `} to="/quests"><Logo /></Link>
 
       <div className="flex gap-5 lg:gap-12">
         <NavLink className={linkStyle} to="/quests" end>
