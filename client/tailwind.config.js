@@ -11,7 +11,8 @@ export default {
       },
       colors: {
         'mq-purple': '#8E00FF',
-        'mq-blue': '#0B42FF'
+        'mq-blue': '#0B42FF',
+        'mq-boring': '#F3F8FE'
       },
     },
   },
