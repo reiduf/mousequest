@@ -1,113 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MostPopList from "../../components/FindQuestsPage/MostPopList";
+import * as questService from "../../utilities/quest-service"
+import { Quest } from "../../utilities/quest-service";
 
 export default function FindQuests() {
-  const [popQuests, setPopQuests] = useState([
-    {
-      title: "Disney historical Quest for the newbies",
-      description: "Travel around disneyland and learn about its history!",
-      tags: {
-        kids: true,
-        adults: true,
-        families: true,
-        ca: false,
-        disneyland: true,
-        short: true,
-        easy: true,
-        hard: false,
-        mickeys: false,
-        queue: false,
-        riddles: false,
-        _id: 1
-      },
-      tasks: [
-        "Find the castle",
-        "Eat a corndog",
-        "ride the main street horse cart"
-      ],
-      likes: 154,
-      accepted: 107,
-      author: "Reina DuFrene"
-    },
-    {
-      title: "Disney foodie quest",
-      description: "Travel around disneyland and learn about its history!",
-      tags: {
-        kids: true,
-        adults: true,
-        families: true,
-        ca: false,
-        disneyland: true,
-        short: true,
-        easy: true,
-        hard: false,
-        mickeys: false,
-        queue: false,
-        riddles: false,
-        _id: 2
-      },
-      tasks: [
-        "Find the castle",
-        "Eat a corndog",
-        "ride the main street horse cart"
-      ],
-      likes: 154,
-      accepted: 107,
-      author: "Reina DuFrene"
-    },
-    {
-      title: "People watching quest",
-      description: "Travel around disneyland and learn about its history!",
-      tags: {
-        kids: true,
-        adults: true,
-        families: true,
-        ca: false,
-        disneyland: true,
-        short: true,
-        easy: true,
-        hard: false,
-        mickeys: false,
-        queue: false,
-        riddles: false,
-        _id: 3
-      },
-      tasks: [
-        "Find the castle",
-        "Eat a corndog",
-        "ride the main street horse cart"
-      ],
-      likes: 154,
-      accepted: 107,
-      author: "Reina DuFrene"
-    },
-    {
-      title: "Characters race",
-      description: "Travel around disneyland and learn about its history!",
-      tags: {
-        kids: true,
-        adults: true,
-        families: true,
-        ca: false,
-        disneyland: true,
-        short: true,
-        easy: true,
-        hard: false,
-        mickeys: false,
-        queue: false,
-        riddles: false,
-        _id: 4
-      },
-      tasks: [
-        "Find the castle",
-        "Eat a corndog",
-        "ride the main street horse cart"
-      ],
-      likes: 154,
-      accepted: 107,
-      author: "Reina DuFrene"
-    },
-  ])
+  const [popQuests, setPopQuests] = useState<Quest[]>([])
+
+  useEffect(() => {
+    async function getPopQuests() {
+      const popQuests = await questService.getMostPopQuests();
+      setPopQuests(popQuests);
+    }
+    getPopQuests();
+  }, [])
 
   return (
     <main className="mq-bg">

@@ -1,8 +1,10 @@
+import { Quest } from "../../utilities/quest-service"
 import MostPopQuest from "./MostPopQuest"
 
-interface Props {
-  popQuests: [{}]
+export interface Props {
+  popQuests: Quest[],
 }
+
 export default function MostPopList({popQuests}: Props) {
   const popQuestList = popQuests.map((popQuest, idx) => 
     <MostPopQuest key={idx} popQuestData={popQuest} />
