@@ -32,6 +32,12 @@ export default function NewQuestForm() {
     setTags(newTags);
   }
 
+  function deleteTask(deleteIdx: number) {
+    // task isnt needed, use _ as placeholder
+    const newTasks = tasks.filter((_, idx) => idx !== deleteIdx )
+    setTasks(newTasks);
+  }
+
   function addTask(task: string) {
     setTasks([...tasks, task]);
   }
@@ -81,7 +87,7 @@ export default function NewQuestForm() {
         <TagCheckbox onChange={handleChange} checked={tags.hard} name="hard" label="Hard quests" />
         <TagCheckbox onChange={handleChange} checked={tags.mickeys} name="mickeys" label="Hidden mickey's" />
         <TagCheckbox onChange={handleChange} checked={tags.queue} name="queue" label="Queue Line Quests" />
-        <TagCheckbox onChange={handleChange} checked={tags.queue} name="riddles" label="Riddles" />
+        <TagCheckbox onChange={handleChange} checked={tags.riddles} name="riddles" label="Riddles" />
       </fieldset>
       <div className="my-4 w-full 2xl:w-1/3 md:w-1/2 text-center">
         <AddTaskForm addTask={addTask} />
@@ -93,7 +99,7 @@ export default function NewQuestForm() {
             Create Quest
           </button>
         }
-        <NewQuestTaskList tasks={tasks}/>
+        <NewQuestTaskList deleteTask={deleteTask} tasks={tasks}/>
       </div>
     </main>
   )
