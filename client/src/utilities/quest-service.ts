@@ -2,7 +2,7 @@ const dummy = [
   {
     _id: "1",
     title: "Disney historical Quest for the newbies",
-    description: "Travel around disneyland and learn about its history!",
+    description: "Embark on an enchanting Disneyland scavenger hunt where the magic is in the details! Your journey begins at Sleeping Beauty's Castle, with a whimsical map guiding you through hidden nooks and crannies. Seek out elusive characters like the mischievous Cheshire Cat and collect enchanted tokens from iconic attractions. Uncover secret passages, solve riddles, and discover the hidden treasures that make this fantastical scavenger hunt a truly spellbinding adventure for all ages.",
     tags: {
       kids: true,
       adults: true,

@@ -19,3 +19,18 @@
 .btn {
   @apply my-5 bg-mq-purple px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest;
 }
+
+@keyframes breathe {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+
+.breathe {
+  animation: breathe 1.5s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

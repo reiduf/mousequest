@@ -26,7 +26,12 @@ export default function QuestDetail() {
   }
 
   // "as keyof ..." for ts key type clarifcation
-  const tagsList = Object.keys(quest.tags).filter(tag => quest.tags[tag as keyof Quest["tags"]]).map(tag => <p key={tag}>{tag}</p>)
+  const tagsList = Object.keys(quest.tags).filter(tag => quest.tags[tag as keyof Quest["tags"]]).map(tag => 
+        <p 
+          key={tag}
+          className="bg-mq-purple p-1 px-3 rounded-md inline-flex m-1 justify-center gap-2 uppercase text-sm text-white font-extrabold tracking-wide"
+        >{tag}</p>
+        )
 
 
   const infoButtonStyle = "shadow-md font-black tracking-wide uppercase flex gap-1 text-xs items-center bg-white rounded-sm py-1 px-2"
@@ -34,7 +39,7 @@ export default function QuestDetail() {
 
   return (
     <>
-      <main>
+      <main className="bg-mq-boring overflow-scroll md:h-screen h-[140vh]">
         <div className="relative flex justify-center items-center w-full mx-auto bg-center h-80 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
           <div className="h-1/2 2xl:w-3/4 flex items-center justify-center bg-white/85 w-5/6 rounded-md p-2 text-center">
             <p className="text-2xl xl:text-4xl capitalize font-medium">{quest.title}</p> 
@@ -66,13 +71,29 @@ export default function QuestDetail() {
         </div>
 
         {/* Gray details section */}
-        <div className="bg-mq-boring h-screen overflow-scroll flex flex-col items-center px-5">
+        <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
+
           <h2 className={headerStyle}>Quest Description</h2>
-          <p className="xl:max-w-4xl text-center text-md leading-7">Embark on an enchanting Disneyland scavenger hunt where the magic is in the details! Your journey begins at Sleeping Beauty's Castle, with a whimsical map guiding you through hidden nooks and crannies. Seek out elusive characters like the mischievous Cheshire Cat and collect enchanted tokens from iconic attractions. Uncover secret passages, solve riddles, and discover the hidden treasures that make this fantastical scavenger hunt a truly spellbinding adventure for all ages.</p>
+          <p className="xl:max-w-4xl text-justify text-md leading-7">{quest.description}</p>
+          
           <h2 className={headerStyle}>Categories</h2>
           <div>
             {tagsList}
           </div>
+
+          <h2 className={headerStyle}>Author</h2>
+          <p className="flex text-lg items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
+              </svg>
+              {quest.author}
+          </p>
+
+          <button 
+            className="bg-gradient-to-b from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem]  breathe py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
+            >
+            Accept Quest
+          </button>
         </div>
       </main>
     </>
