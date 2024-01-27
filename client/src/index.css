@@ -9,7 +9,7 @@
 }
 
 .mq-title {
-  @apply text-3xl font-black uppercase tracking-widest;
+  @apply text-2xl font-black uppercase tracking-widest;
 }
 
 .active {
