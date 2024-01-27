@@ -14,7 +14,7 @@ export default function NewQuestTaskList({tasks, deleteTask}: Props ) {
       <h2 className="font-black uppercase tracking-wider mt-5 mb-2">Quest Tasks</h2>
       <hr className="my-2 border-dashed border-2"/>
       <ul className="flex flex-col-reverse mb-20">
-        {tasks.length !== 0 ? taskListItems : <p className="text-center my-6 mb-36 text-white font-thin">No tasks yet.</p>}
+        {tasks.length !== 0 ? taskListItems : <p className="text-center my-6 mb-36 text-mq-purple">No tasks yet.</p>}
       </ul>
 
       
