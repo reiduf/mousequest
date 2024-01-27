@@ -58,8 +58,6 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
         <input className={inputStyle} type="password" name="password" value={formData.password} onChange={handleChange} required />
         <label className={labelStyle}>Confirm</label>
         <input className={inputStyle} type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
-        <label className={labelStyle}>What kind of quests are you looking for?</label>
-        <textarea className={inputStyle} name="bio" value={formData.bio} onChange={handleChange} required />
         <button className="bg-purple-50 p-1 my-4 w-1/3 mx-auto" type="submit" disabled={disable}>SIGN UP</button>
       </form>
       <p className="error-message">&nbsp;{error}</p>
