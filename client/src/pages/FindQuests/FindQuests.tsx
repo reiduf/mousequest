@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MostPopList from "../../components/FindQuestsPage/MostPopList";
+import SearchResultsList from "../../components/FindQuestsPage/SearchResultsList";
 import * as questService from "../../utilities/quest-service"
 import { Quest } from "../../utilities/quest-service";
 
@@ -17,8 +18,6 @@ export default function FindQuests() {
   return (
     <main className="mq-bg">
       <h1 className="mq-title text-center mb-4">Search Quests</h1>
-
-
       <div className="w-full flex items-center flex-col justify-center">
         <label className="relative xl:w-1/2 w-full">
           <svg className="w-8 h-8 absolute top-1 right-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -32,9 +31,9 @@ export default function FindQuests() {
           placeholder="Search..."
         />
       </div>
+      <SearchResultsList popQuests={popQuests} />
 
       <div className="flex flex-col text-center items-center p-3 pt-5 mt-5 pb-0 gap-20 justify-center">
-
         <h2 className="mq-title">Most Popular Quests</h2>
       </div>
       <MostPopList popQuests={popQuests} /> 

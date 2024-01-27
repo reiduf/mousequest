@@ -55,7 +55,7 @@ export default function NewQuestForm() {
   return (
     <main className="flex flex-col justify-center items-center">
 
-      <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">Quest Title</label>
+      <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title</label>
       <input 
         placeholder="Quest title..." 
         className="font-bold p-3 mb-3 text-center rounded-md w-full 2xl:w-1/3 md:w-1/2" 
@@ -64,7 +64,7 @@ export default function NewQuestForm() {
         onChange={(evt) => setTitle(evt.target.value)}
       />
 
-      <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">Quest Description</label>
+      <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">2. Add a Description for your quest</label>
       <textarea 
         placeholder="Quest description..." 
         className="p-3 mb-3 h-28 rounded-md w-full 2xl:w-1/3 md:w-1/2" 
@@ -74,7 +74,7 @@ export default function NewQuestForm() {
       >
       </textarea>
 
-      <label className="font-black uppercase tracking-wider my-3 mb-1" htmlFor="">Tags</label>
+      <label className="font-black uppercase tracking-wider my-3 mb-1" htmlFor="">3. Add Tags</label>
       <fieldset className="w-full 2xl:w-1/3 md:w-1/2">
         <TagCheckbox onChange={handleChange} checked={tags.kids} name="kids" label="Good for kids" />
         <TagCheckbox onChange={handleChange} checked={tags.adults} name="adults" label="Good for adults" />

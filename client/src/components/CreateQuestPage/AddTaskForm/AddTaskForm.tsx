@@ -14,9 +14,8 @@ export default function AddTaskForm({addTask}: Props) {
   }
 
   return(
-       <form onSubmit={handleAddTask} className="flex flex-col justify-center text-center mt-2 relative">
-        <label className="font-black uppercase tracking-wider mb-2">Task Details</label>
-        <span className="text-xs italic absolute font-semibold bottom-[4.5rem] left-0">*Min. 3 tasks required</span>
+       <form onSubmit={handleAddTask} className="flex flex-col justify-center text-center mt-2">
+        <label className="font-black uppercase tracking-wider mb-2">4. Add tasks - at least 3!</label>
         <textarea placeholder="Task details..." className="p-3 mb-4 h-36 rounded-md" name="description" value={description} onChange={(evt) => setDescription(evt.target.value)}></textarea>
         <button className="my-5 bg-black px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" type="submit">Add Task</button>
       </form>
