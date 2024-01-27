@@ -1,7 +1,8 @@
 import * as usersAPI from "./users-api"
 
 export interface User {
-  name: string;
+  name: string,
+  bio: string,
 
 }
 

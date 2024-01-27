@@ -18,6 +18,11 @@ const userSchema = new Schema({
     trim: true,
     minLength: 3,
     required: true,
+  },
+  bio: {
+    type: String,
+    required: true,
+    trim: true,
   }
 }, {
   timestamps: true,

@@ -11,6 +11,7 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
     name: "",
     email: "",
     password: "",
+    bio: "",
     confirm: "",
   });
   const [error, setError] = useState('');
@@ -18,7 +19,7 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
 
   const disable = formData.password !== formData.confirm;
 
-  function handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
@@ -57,6 +58,8 @@ export default function SignUpForm({ setUser }: Props): JSX.Element {
         <input className={inputStyle} type="password" name="password" value={formData.password} onChange={handleChange} required />
         <label className={labelStyle}>Confirm</label>
         <input className={inputStyle} type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
+        <label className={labelStyle}>What's your favorite part about visiting Disneyland?</label>
+        <textarea className={inputStyle} name="bio" value={formData.bio} onChange={handleChange} required />
         <button className="bg-purple-50 p-1 my-4 w-1/3 mx-auto" type="submit" disabled={disable}>SIGN UP</button>
       </form>
       <p className="error-message">&nbsp;{error}</p>
