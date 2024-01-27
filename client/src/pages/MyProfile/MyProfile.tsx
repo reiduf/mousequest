@@ -2,14 +2,12 @@ import castleUrl from '../../img/castle.webp';
 import picoUrl from '../../img/pico.jpg';
 import * as userService from '../../utilities/users-service'
 
-const headerStyle = "text-center text-3xl uppercase font-black tracking-wider mt-8 mb-2"
-
 interface Props {
   user: userService.User,
 }
 
-const userValuesStyles = "p-1 flex flex-col items-center md:text-4xl text-2xl text-mq-purple font-extrabold"
-const labelsStyles = "p-1 flex flex-col justify-start font-semibold uppercase md:text-lg xl:text-xl text-lg"
+const userValuesStyles = "p-1 flex flex-col items-center justify-end md:text-4xl text-2xl text-mq-purple font-extrabold"
+const labelsStyles = "p-1 flex flex-col items-center justify-start font-semibold uppercase md:text-lg xl:text-xl text-lg"
 
 export default function MyProfile({user}: Props) {
 return (
@@ -25,7 +23,7 @@ return (
       <h1 className="text-center font-semibold text-3xl">{user.name}</h1>
  
       <div className="mt-10 grid grid-cols-3 text-center xl:w-1/2 lg:mx-auto">
-        <span className={userValuesStyles}>26</span>
+        <span className={userValuesStyles}>7</span>
         <span className={userValuesStyles}>Explorer</span>
         <span className={userValuesStyles}>4</span>
         
