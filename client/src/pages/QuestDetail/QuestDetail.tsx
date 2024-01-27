@@ -76,7 +76,7 @@ export default function QuestDetail() {
 
         {/* gradient line wrapper */}
         <div className="h-[0.65rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col justify-end">
-          <div className="h-1 bg-mq-boring"></div>
+          <div className="h-[0.45rem] bg-mq-boring"></div>
         </div>
 
         {/* Gray details section */}
