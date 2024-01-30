@@ -9,7 +9,7 @@ require('./config/database');
 const app = express();
  
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({ strict: false }));
 
 const clientDirectory = path.join(__dirname, '..', 'client');
 

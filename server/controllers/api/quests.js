@@ -42,7 +42,8 @@ async function acceptQuest(req, res) {
       taskProgress: Array(reffdQuest.length).fill(false)
     }
     await AcceptedQuest.create(newQuest)
+    res.sendStatus(204)
   } catch(err) {
-    console.error("Error", err);
+    res.status(400).json({ err });
   }  
 }

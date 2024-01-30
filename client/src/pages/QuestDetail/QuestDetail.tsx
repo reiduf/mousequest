@@ -36,8 +36,8 @@ export default function QuestDetail() {
     // call quest service to update likes
   }
 
-  async function handleAccept(questId: string) {
-    await questService.acceptQuest(questId);
+  async function handleAccept() {
+    await questService.acceptQuest(questId!);
     navigate('/quests/accepted-quests');
   }
 
