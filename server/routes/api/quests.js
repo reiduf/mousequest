@@ -7,5 +7,6 @@ router.post('/new', questsCtrl.create);
 router.get('/mostpopular', questsCtrl.getMostPopularQuest);
 router.get('/:questId', questsCtrl.getQuestById);
 router.post('/accepted-quests', questsCtrl.acceptQuest);
+router.get('/accepted-quests', questsCtrl.getAcceptedQuests);
 
 module.exports = router;

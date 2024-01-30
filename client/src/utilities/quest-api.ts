@@ -19,6 +19,10 @@ export async function acceptQuest(questId: string): Promise<void>{
   return sendRequest(`${BASE_URL}/accepted-quests`, 'POST', questId)
 }
 
+export async function getAcceptedQuests() {
+  return sendRequest(`${BASE_URL}/accepted-quests`, 'GET')
+}
+
 // types
 interface NewQuest {
   title: string,

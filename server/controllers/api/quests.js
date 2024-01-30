@@ -33,13 +33,17 @@ async function getQuestById(req, res) {
   console.log
 }
 
+async function getAcceptedQuests(req, res) {
+  //TODO
+}
+
 async function acceptQuest(req, res) {
   try {
     const reffdQuest = await Quest.findOne({_id: req.body})
     const newQuest = {
       user: req.user._id,
       quest: reffdQuest._id,
-      taskProgress: Array(reffdQuest.length).fill(false)
+      taskProgress: Array(reffdQuest.tasks.length).fill(false)
     }
     await AcceptedQuest.create(newQuest)
     res.sendStatus(204)
