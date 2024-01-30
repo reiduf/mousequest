@@ -1,19 +1,19 @@
-const mongoose = rquire('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   description: {type: String, required: true},
   hint: {type: String, required: false},
-  completed: {
-    type: Boolean, 
-    required: false, 
-    default: false
-  },
 }, {
   timestamps: true,
 });
 
 const questSchema = new Schema({
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   title: { type: String, required: true },
   description: { type: String, required: true},
   tags: {
@@ -30,4 +30,18 @@ const questSchema = new Schema({
     riddles: { type: Boolean, default: false },
   },
   tasks: [taskSchema],
-})
+  likes: { 
+    type: Number, 
+    required: false, 
+    default: 0
+  }, 
+  accepted: {
+    type: Number,
+    required: false,
+    default: 0,
+  }
+}, {
+  timestamps: true,
+});
+
+module.exports = mongoose.model('Quest', questSchema);

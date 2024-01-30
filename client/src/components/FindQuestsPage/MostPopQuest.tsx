@@ -1,6 +1,6 @@
 import castleUrl from '../../img/castle.webp';
 import { Link } from 'react-router-dom';
-import { Quest } from '../../utilities/quest-service';
+import { Quest } from '../../utilities/quest-api';
 
 interface Props {
   popQuestData: Quest,

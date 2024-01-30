@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { Task } from "../../../utilities/quest-api"
 import NewQuestTaskList from "../NewQuestTaskList/NewQuestTaskList";
 import AddTaskForm from "../AddTaskForm/AddTaskForm"
 import TagCheckbox from "../TagCheckbox/TagCheckbox"
-import * as questService from "../../../utilities/quest-service"
+import * as questService from "../../../utilities/quest-api"
 
 
 export default function NewQuestForm() {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("")
   const [questDesc, setQuestDesc] = useState("")
   const [tags, setTags] = useState({
@@ -38,8 +39,11 @@ export default function NewQuestForm() {
     setTasks(newTasks);
   }
 
-  function addTask(task: string) {
-    setTasks([...tasks, task]);
+  function addTask(task: Task) {
+    setTasks([...tasks, {
+      description: task.description,
+      hint: task.hint,
+    }, ]);
   }
 
   async function handleCreate() {

@@ -1,12 +1,13 @@
 import TaskItem from "../TaskItem/TaskItem"
+import { Task } from "../../../utilities/quest-api"
 
 interface Props {
-  tasks: string[],
+  tasks: Task[],
   deleteTask: (idx: number) => void,
 }
 
 export default function NewQuestTaskList({tasks, deleteTask}: Props ) {
-  const taskListItems = tasks.map((task: string, idx: number) => 
+  const taskListItems = tasks.map((task: Task, idx: number) => 
     <TaskItem key={idx} seq={idx + 1} task={task} deleteTask={deleteTask} />
   )
   return (

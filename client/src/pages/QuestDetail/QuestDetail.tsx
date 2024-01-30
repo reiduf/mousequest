@@ -1,8 +1,8 @@
 import castleUrl from '../../img/castle.webp';
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-import * as questService from "../../utilities/quest-service"
-import { Quest } from "../../utilities/quest-service";
+import * as questService from "../../utilities/quest-api"
+import { Quest } from "../../utilities/quest-api";
 
 export default function QuestDetail() {
   //questId grabbed from url

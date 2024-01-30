@@ -1,4 +1,4 @@
-import { Quest } from "../../utilities/quest-service"
+import { Quest } from "../../utilities/quest-api"
 import SearchResultQuest from "./SearchResultQuest"
 
 export interface Props {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import MostPopList from "../../components/FindQuestsPage/MostPopList";
 import SearchResultsList from "../../components/FindQuestsPage/SearchResultsList";
-import * as questService from "../../utilities/quest-service"
-import { Quest } from "../../utilities/quest-service";
+import * as questService from "../../utilities/quest-api"
+import { Quest } from "../../utilities/quest-api";
 
 export default function FindQuests() {
   const [popQuests, setPopQuests] = useState<Quest[]>([])

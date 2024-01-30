@@ -1,5 +1,7 @@
+import {Task} from "../../../utilities/quest-api"
+
 interface Props {
-  task: string,
+  task: Task,
   seq: number,
   deleteTask: (idx: number) => void,
 }
@@ -18,7 +20,10 @@ export default function TaskItem({task, seq, deleteTask}: Props) {
             Delete
           </div>
         </div>
-        <div className="text-pretty">{task}</div>
+        <div className="text-pretty">
+          <p>{task.description}</p>
+          {task.hint && <p><span className="font-bold text-mq-purple">HINT: </span>{task.hint}</p>}
+        </div>
       </li>
 
   )
