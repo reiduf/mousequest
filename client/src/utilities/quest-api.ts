@@ -55,7 +55,9 @@ export interface Quest {
   tasks: Task[],
   likes: number,
   accepted: number,
-  author: string,
+  author: {
+    name: string,
+  },
 }
 
 export interface Task {

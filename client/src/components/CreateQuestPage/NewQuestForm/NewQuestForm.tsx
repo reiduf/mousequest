@@ -4,6 +4,7 @@ import NewQuestTaskList from "../NewQuestTaskList/NewQuestTaskList";
 import AddTaskForm from "../AddTaskForm/AddTaskForm"
 import TagCheckbox from "../TagCheckbox/TagCheckbox"
 import * as questService from "../../../utilities/quest-api"
+import { useNavigate } from 'react-router-dom';
 
 
 export default function NewQuestForm() {
@@ -23,7 +24,8 @@ export default function NewQuestForm() {
     mickeys: false,
     queue: false,
     riddles: false,
-  })
+  });
+  const navigate = useNavigate();
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const newTags = {
@@ -53,7 +55,8 @@ export default function NewQuestForm() {
       tags,
       tasks,
     }
-    await questService.createQuest(questData);
+    const newQuestId = await questService.createQuest(questData);
+    navigate(`/quests/${newQuestId}`)
   }
 
   return (

@@ -26,4 +26,7 @@ async function getMostPopularQuest(req, res) {
 
 async function getQuestById(req, res) {
   const quest = await Quest.findById({ _id: req.params.questId})
+  await quest.populate('author')
+  res.json(quest)
+  console.log
 }
