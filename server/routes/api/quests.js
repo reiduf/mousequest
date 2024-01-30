@@ -6,5 +6,6 @@ const questsCtrl = require('../../controllers/api/quests');
 router.post('/new', questsCtrl.create);
 router.get('/mostpopular', questsCtrl.getMostPopularQuest);
 router.get('/:questId', questsCtrl.getQuestById);
+router.post('/accepted-quests', questsCtrl.acceptQuest);
 
 module.exports = router;

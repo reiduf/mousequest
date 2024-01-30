@@ -1,9 +1,11 @@
+const AcceptedQuest = require('../../models/acceptedQuest');
 const Quest = require('../../models/quest')
 
 module.exports = {
   create,
   getMostPopularQuest,
   getQuestById,
+  acceptQuest,
 }
 
 async function create(req, res) {
@@ -29,4 +31,18 @@ async function getQuestById(req, res) {
   await quest.populate('author')
   res.json(quest)
   console.log
+}
+
+async function acceptQuest(req, res) {
+  try {
+    const reffdQuest = await Quest.findOne({_id: req.body})
+    const newQuest = {
+      user: req.user._id,
+      quest: reffdQuest._id,
+      taskProgress: Array(reffdQuest.length).fill(false)
+    }
+    await AcceptedQuest.create(newQuest)
+  } catch(err) {
+    console.error("Error", err);
+  }  
 }

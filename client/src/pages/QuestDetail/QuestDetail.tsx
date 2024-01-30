@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { Quest } from "../../utilities/quest-api";
+import { useNavigate } from 'react-router-dom';
 
 export default function QuestDetail() {
   //questId grabbed from url
   const {questId} = useParams();
-  const [quest, setQuest] = useState<Quest | null>(null)
+  const [quest, setQuest] = useState<Quest | null>(null);
+  const navigate = useNavigate();
     
   
   useEffect(() => {
@@ -32,6 +34,11 @@ export default function QuestDetail() {
     }
     setQuest(newLikes);
     // call quest service to update likes
+  }
+
+  async function handleAccept(questId: string) {
+    await questService.acceptQuest(questId);
+    navigate('/quests/accepted-quests');
   }
 
   // "as keyof ..." for ts key type clarifcation
@@ -99,7 +106,8 @@ export default function QuestDetail() {
           </p>
 
           <button 
-            className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
+            className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+            onClick={handleAccept} 
             >
             Accept Quest
           </button>

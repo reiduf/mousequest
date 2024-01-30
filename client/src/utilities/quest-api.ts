@@ -15,6 +15,10 @@ export async function getQuestById(questId: string): Promise<Quest> {
   return sendRequest(`${BASE_URL}/${questId}`);
 }
 
+export async function acceptQuest(questId: string): Promise<void>{
+  return sendRequest(`${BASE_URL}/accepted-quests`, 'POST', questId)
+}
+
 // types
 interface NewQuest {
   title: string,
