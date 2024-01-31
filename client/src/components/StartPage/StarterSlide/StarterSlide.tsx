@@ -2,14 +2,16 @@ import { AcceptedQuest } from "../../../utilities/quest-api";
 
 interface Props {
   quest: AcceptedQuest,
+  setActiveSlide: (taskIdx: number) => void,
+  activeSlide: number | 'starter'
 }
 
 const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-8 mb-2"
 
 
-export default function StarterSlide({quest}: Props) {
+export default function StarterSlide({quest, setActiveSlide, activeSlide}: Props) {
   const overviewList = quest.taskProgress.map((task, idx) => 
-    <div className="grid grid-cols-2 my-1">
+    <div onClick={() => setActiveSlide(idx)} className="grid grid-cols-2 my-1 border-b-2 cursor-pointer">
       <p className="font-bold text-black">Task {idx + 1}:</p>
       <p key={idx} className={task ? "text-mq-purple" : ""}>{task ? "Completed" : "Not Completed"}</p>  
     </div>
@@ -22,6 +24,12 @@ export default function StarterSlide({quest}: Props) {
       
       <h1 className={headerStyle}>Quest Progress Overview</h1>
       {overviewList}
+      <button 
+        className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+        onClick={() => setActiveSlide(0)} 
+      >
+        Start Quest
+      </button>
     </>
   )
 }
