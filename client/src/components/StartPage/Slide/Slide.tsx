@@ -46,8 +46,8 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
         </svg>
       </div>
       
-      <div className="bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg">
-        <div className="bg-white lg:p-8 p-5 pt-6 rounded-md text-center lg:text-xl text-lg lg:leading-10 leading-8 lg:max-w-xl">
+      <div className="bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg  xl:w-1/3 w-full">
+        <div className="bg-white lg:p-8 p-5 pt-6 rounded-md text-center lg:text-xl text-lg lg:leading-10 leading-8 w-full">
           <p>{taskData.description}</p>
           {taskData.hint && 
             <>
