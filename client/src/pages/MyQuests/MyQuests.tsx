@@ -1,12 +1,12 @@
 import ActiveQuestList from "../../components/MyQuests/ActiveQuestList/ActiveQuestList"
 import CompletedQuestList from "../../components/MyQuests/CompletedQuestsList/CompletedQuestList"
-import { Quest } from "../../utilities/quest-api";
+import { AcceptedQuest } from "../../utilities/quest-api";
 import * as questService from "../../utilities/quest-api"
 import { useState, useEffect } from "react";
 
 export default function MyQuests() {
-  const [activeQuests, setActiveQuests] = useState<Quest[]>([])
-  const [completedQuests, setCompletedQuests] = useState<Quest[]>([])
+  const [activeQuests, setActiveQuests] = useState<AcceptedQuest[]>([])
+  const [completedQuests, setCompletedQuests] = useState<AcceptedQuest[]>([])
 
   useEffect(() => {
     async function getAcceptedQuests() {
@@ -22,10 +22,14 @@ export default function MyQuests() {
   return (
     <main className="mq-bg">
       <div className="flex justify-center">
-        <h1 className="mq-title">Accepted Quests</h1>
+        <h2 className="mq-title">Active Quests ({activeQuests.length})</h2>
       </div>
-      <ActiveQuestList />
-      <CompletedQuestList />
+      <ActiveQuestList activeQuests={activeQuests} />
+
+      <div className="flex justify-center mt-8">
+        <h2 className="mq-title">Completed Quests ()</h2>
+      </div>
+      <CompletedQuestList completedQuests={completedQuests} />
     </main>
   )
 }

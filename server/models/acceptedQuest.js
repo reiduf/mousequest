@@ -15,6 +15,7 @@ const acceptedQuestSchema = new Schema({
   taskProgress: [Boolean]
 }, {
   timestamps: true,
+  toJSON: { virtuals: true }
 });
 
 acceptedQuestSchema.virtual('isComplete').get(function() {

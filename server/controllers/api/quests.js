@@ -1,3 +1,4 @@
+const acceptedQuest = require('../../models/acceptedQuest');
 const AcceptedQuest = require('../../models/acceptedQuest');
 const Quest = require('../../models/quest')
 
@@ -6,6 +7,7 @@ module.exports = {
   getMostPopularQuest,
   getQuestById,
   acceptQuest,
+  getAcceptedQuests,
 }
 
 async function create(req, res) {
@@ -34,7 +36,20 @@ async function getQuestById(req, res) {
 }
 
 async function getAcceptedQuests(req, res) {
-  //TODO
+  try {
+    const acceptedQuests = await AcceptedQuest.find({ user: req.user._id }).populate('quest').exec()
+
+    const activeQuests = acceptedQuests.filter(quest => !quest.isComplete)
+    const completeQuests = acceptedQuests.filter(quest => quest.isComplete)
+    const response = {
+      activeList: activeQuests,
+      completeList: completeQuests,
+    };
+    res.json(response);
+  } catch(err) {
+    res.status(400).json({ err });
+  }
+  
 }
 
 async function acceptQuest(req, res) {

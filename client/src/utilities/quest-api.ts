@@ -73,6 +73,12 @@ export interface Task {
   hint?: string,
 }
 
+export interface AcceptedQuest {
+  quest: Quest,
+  taskProgress: boolean[],
+  createdAt: string,
+}
+
 
 
 
