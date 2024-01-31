@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { AcceptedQuest } from "../../utilities/quest-api";
+import SlideDeck from "../../components/StartPage/SlideDeck/SlideDeck"
 
 export default function StartQuest() {
     //questId grabbed from url
@@ -40,7 +41,7 @@ export default function StartQuest() {
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
-
+          <SlideDeck questData={quest} />
         </div>
       </main>
     </>
