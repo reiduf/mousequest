@@ -97,6 +97,11 @@ export default function QuestDetail() {
             {tagsList}
           </div>
 
+          <h2 className={headerStyle}>Total tasks</h2>
+          <p className="flex text-lg items-center gap-1">
+              {quest.tasks.length}
+          </p>
+
           <h2 className={headerStyle}>Author</h2>
           <p className="flex text-lg items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -104,6 +109,7 @@ export default function QuestDetail() {
               </svg>
               {quest.author.name}
           </p>
+
 
           <button 
             className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
