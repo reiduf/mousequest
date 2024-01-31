@@ -7,7 +7,8 @@ interface Props {
 }
 
 export default function MostPopQuest({popQuestData}: Props) {
-  return (  <Link to={`/quests/${popQuestData._id}`}>
+  return (  
+    <Link to={`/quests/${popQuestData._id}`}>
       <li className="bg-white p-4 flex gap-4 rounded-md hover:scale-[1.01] cursor-pointer transition duration-150">
         <div className="w-32 h-32 bg-no-repeat bg-cover bg-center rounded-md" style={{backgroundImage: `url('${castleUrl}')`}}></div>
         <div className=" w-[60%] flex flex-col justify-between">

@@ -77,6 +77,7 @@ export interface AcceptedQuest {
   quest: Quest,
   taskProgress: boolean[],
   createdAt: string,
+  _id: string,
 }
 
 

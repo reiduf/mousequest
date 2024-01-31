@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import MyProfile from './pages/MyProfile/MyProfile';
 import Logo from "./assets/logo-mobile.svg?react"
 import QuestDetail from "./pages/QuestDetail/QuestDetail"
+import StartQuest from "./pages/StartQuest/StartQuest"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/quests/new" element={<CreateQuest />} />
             <Route path="/quests/accepted-quests" element={<MyQuests />} />
             <Route path="/myprofile" element={<MyProfile user={user} />} />
+            <Route path="/quests/accepted-quests/:questId" element={<StartQuest />} />
           </Routes>
         </>
         :
