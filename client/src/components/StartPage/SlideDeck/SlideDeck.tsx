@@ -17,7 +17,7 @@ export default function SlideDeck({questData}: Props) {
 
   return (
     <>
-      {activeSlide === 'starter' && <StarterSlide quest={questData} setActiveSlide={setActiveSlide} activeSlide={activeTaskIndex} />}
+      {activeSlide === 'starter' && <StarterSlide quest={questData} setActiveSlide={setActiveSlide} />}
       {activeTask && <Slide taskData={activeTask} idx={activeTaskIndex} setActiveSlide={setActiveSlide} activeSlide={activeTaskIndex} taskListLength={questData.quest.tasks.length}/>}
     </>
   )

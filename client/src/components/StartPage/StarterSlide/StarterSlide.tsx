@@ -3,13 +3,12 @@ import { AcceptedQuest } from "../../../utilities/quest-api";
 interface Props {
   quest: AcceptedQuest,
   setActiveSlide: (taskIdx: number) => void,
-  activeSlide: number | 'starter'
 }
 
 const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-8 mb-2"
 
 
-export default function StarterSlide({quest, setActiveSlide, activeSlide}: Props) {
+export default function StarterSlide({quest, setActiveSlide}: Props) {
   const overviewList = quest.taskProgress.map((task, idx) => 
     <div onClick={() => setActiveSlide(idx)} className="grid grid-cols-2 my-1 border-b-2 cursor-pointer">
       <p className="font-bold text-black">Task {idx + 1}:</p>

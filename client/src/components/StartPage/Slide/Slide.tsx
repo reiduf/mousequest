@@ -13,6 +13,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
   const [showHint, setShowHint] = useState(false)
 
   function handleBackSlideClick() {
+    setShowHint(false);
     if (activeSlide === 0) {
       setActiveSlide('starter')
     } else {
@@ -21,6 +22,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
   }
 
   function handleForwardSlideClick() {
+    setShowHint(false)
     if (activeSlide === taskListLength - 1) {
       return
     } else {
@@ -39,13 +41,13 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
         <div className="bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg my-5 lg:w-96 w-56 text-center">
           <h1 className="p-3 bg-white rounded-md font-semibold text-xl">Task {idx +1} / {taskListLength}</h1>
         </div>
-        <svg onClick={handleForwardSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`w-10 h-10 ${activeSlide === taskListLength - 1 ? "fill-gray-400": "fill-black"} cursor-pointer`}>
+        <svg onClick={handleForwardSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`w-10 h-10 ${activeSlide === taskListLength - 1 ? "fill-gray-400 cursor-default": "fill-black"} cursor-pointer`}>
           <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
         </svg>
       </div>
       
       <div className="bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg">
-        <div className="bg-white p-8 pt-6 rounded-md text-center lg:text-xl text-lg leading-9 lg:max-w-xl">
+        <div className="bg-white lg:p-8 p-5 pt-6 rounded-md text-center lg:text-xl text-lg lg:leading-10 leading-8 lg:max-w-xl">
           <p>{taskData.description}</p>
           {taskData.hint && 
             <>
@@ -55,7 +57,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
                 </svg>
                 <p className="uppercase text-sm text-mq-purple font-black tracking-wider">Need a Hint?</p>
               </div>
-                {showHint && <p className="text-xs uppercase mt-2">{taskData.hint}</p>}
+                {showHint && <p className="text-xs uppercase leading-5 mt-2">{taskData.hint}</p>}
             </>
           }
         </div>
