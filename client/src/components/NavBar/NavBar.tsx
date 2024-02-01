@@ -5,12 +5,11 @@ import Logo from "../../assets/logo-new.svg?react"
 
 
 interface Props {
-  user: userService.User,
   setUser: (user: null) => void;
 }
 
 
-export default function NavBar({user, setUser}: Props) {
+export default function NavBar({setUser}: Props) {
   function handleLogOut() {
     userService.logout();
     setUser(null)

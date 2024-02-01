@@ -7,7 +7,7 @@ interface Props {
   taskData: Task,
   idx: number,
   setActiveSlide: (activeIndex: number | 'starter') => void,
-  activeSlide: number | 'starter',
+  activeSlide: number,
   taskListLength: number,
   updateTask: (idx: number) => void,
   quest: AcceptedQuest,
@@ -50,11 +50,9 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
             </div>
           </div>
         }
-        { activeSlide !== 'starter' &&
-          <svg onClick={handleBackSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-10 h-10 fill-black cursor-pointer">
-            <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z" clipRule="evenodd" />
-          </svg>
-        }
+        <svg onClick={handleBackSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-10 h-10 fill-black cursor-pointer">
+          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z" clipRule="evenodd" />
+        </svg>
         <div className={`${quest.taskProgress[idx] ? "bg-gray-300" : "bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue"} p-[0.3rem] rounded-lg my-5 lg:w-96 w-56 text-center`}>
           <h1 className={`${quest.taskProgress[idx] ? "text-gray-300" : "text-black"} p-3 bg-white rounded-md font-semibold text-xl`}>Task {idx +1} / {taskListLength}</h1>
         </div>
