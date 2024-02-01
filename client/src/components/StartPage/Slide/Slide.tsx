@@ -69,13 +69,6 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
       </div>
 
       { quest.taskProgress[idx] ?
-        <button 
-          onClick={(idx) => updateTask(idx)}
-          className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
-        >
-          Mark Complete
-        </button>
-        :
         <div className="flex flex-col items-center justify-center">
           <div className="text-white breathe-sm bg-mq-purple uppercase font-black tracking-wider p-5 mt-8 text-center rounded-xl">
             Task Complete!
@@ -87,6 +80,13 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
             Undo
           </button>
         </div>
+      :
+        <button 
+          onClick={(idx) => updateTask(idx)}
+          className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
+        >
+          Mark Complete
+        </button>        
       }
     </>
   )
