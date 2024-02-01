@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 import {Task} from "../../../utilities/quest-api"
+import { AcceptedQuest } from "../../../utilities/quest-api"
 
 interface Props {
   taskData: Task,
@@ -7,9 +8,11 @@ interface Props {
   setActiveSlide: (activeIndex: number | 'starter') => void,
   activeSlide: number | 'starter',
   taskListLength: number,
+  updateTask: (idx: number) => void,
+  quest: AcceptedQuest,
 }
 
-export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskListLength}:Props) {
+export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskListLength, updateTask, quest}:Props) {
   const [showHint, setShowHint] = useState(false)
 
   function handleBackSlideClick() {
@@ -46,22 +49,45 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
         </svg>
       </div>
       
-      <div className="bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg  xl:w-1/3 w-full">
-        <div className="bg-white lg:p-8 p-5 pt-6 rounded-md text-center lg:text-xl text-lg lg:leading-10 leading-8 w-full">
+      <div className="bg-gradient-to-t from-mq-purple via-mq-purple to-mq-blue p-[0.3rem] rounded-lg  xl:w-1/3 w-full">
+        <div className="bg-white lg:p-8 p-5 pt-6 rounded-t-md text-center lg:text-xl text-lg lg:leading-10 leading-8 w-full">
           <p>{taskData.description}</p>
+        </div>
           {taskData.hint && 
             <>
-              <div onClick={() => setShowHint(!showHint)} className="flex items-center justify-center gap-1 mt-4 cursor-pointer">
-                <svg className="w-3 h-3 cursor-pointer stroke-mq-purple stroke-[3]" style={showHint ? {transform: "rotate(90deg)", transition: "transform 0.35s"} : {transition: "transform 0.35s"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-                  <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
-                </svg>
-                <p className="uppercase text-sm text-mq-purple font-black tracking-wider">Need a Hint?</p>
+              <div onClick={() => setShowHint(!showHint)} className="bg-mq-purple py-3 cursor-pointer rounded-b-md">
+                <div className="flex items-center justify-center gap-1">
+                  <svg className="w-3 h-3 cursor-pointer stroke-white stroke-[3]" style={showHint ? {transform: "rotate(90deg)", transition: "transform 0.35s"} : {transition: "transform 0.35s"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+                    <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+                  </svg>
+                  <p className="uppercase text-sm text-white font-black tracking-wider">Need a Hint?</p>
+                </div>
+                {showHint && <p className="text-xs uppercase leading-5 mt-2 text-center text-white px-2">{taskData.hint}</p>}
               </div>
-                {showHint && <p className="text-xs uppercase leading-5 mt-2">{taskData.hint}</p>}
             </>
           }
-        </div>
       </div>
+
+      { !quest.taskProgress[idx] ?
+        <button 
+          onClick={(idx) => updateTask(idx)}
+          className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
+        >
+          Mark Complete
+        </button>
+        :
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-white breathe-sm bg-mq-purple uppercase font-black tracking-wider p-5 mt-8 text-center rounded-xl">
+            Task Complete!
+          </div>
+          <button 
+            onClick={(idx) => updateTask(idx)}
+            className="bg-red-400 mt-7 md:max-w-[8rem] py-2 text-white rounded-md text-xs uppercase tracking-widest w-1/2 mx-auto font-bold" 
+          >
+            Undo
+          </button>
+        </div>
+      }
     </>
   )
 }

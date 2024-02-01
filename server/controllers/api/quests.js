@@ -8,6 +8,7 @@ module.exports = {
   acceptQuest,
   getAcceptedQuests,
   getAcceptedQuestById,
+  updateTask,
 }
 
 async function create(req, res) {
@@ -68,4 +69,15 @@ async function acceptQuest(req, res) {
   } catch(err) {
     res.status(400).json({ err });
   }  
+}
+
+async function updateTask(req, res) {
+  try {
+    const quest = await AcceptedQuest.findById({ _id: req.params.questId})
+    quest.taskProgress = req.body.taskProgress;
+    quest.save();
+    res.sendStatus(204);
+  } catch(err) {
+    res.status(400).json({ err });
+  }
 }

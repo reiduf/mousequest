@@ -27,6 +27,10 @@ export async function getAcceptedQuests() {
   return sendRequest(`${BASE_URL}/accepted-quests`, 'GET')
 }
 
+export function updateTask(questData: AcceptedQuest, questId: string): Promise <void> {
+  return sendRequest(`${BASE_URL}/accepted-quests/${questId}`, 'PUT', questData)
+}
+
 // types
 interface NewQuest {
   title: string,

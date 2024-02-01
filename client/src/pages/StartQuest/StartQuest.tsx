@@ -9,8 +9,6 @@ export default function StartQuest() {
     //questId grabbed from url
   const {questId} = useParams();
   const [quest, setQuest] = useState<AcceptedQuest | null>(null);
-
-      
     
   useEffect(() => {
     async function getQuest() {
@@ -23,7 +21,16 @@ export default function StartQuest() {
   if (!quest) {
     return <main>Loading...</main>
   }
-  
+
+  function updateTask(idx: number) {
+    if (!quest) return;
+    const newQuest = {
+      ...quest
+    }
+    newQuest.taskProgress[idx] = !(newQuest.taskProgress[idx]);
+    setQuest(newQuest)
+    questService.updateTask(quest, questId!);
+  }
   
   return (
     <>
@@ -41,7 +48,7 @@ export default function StartQuest() {
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
-          <SlideDeck questData={quest} />
+          <SlideDeck updateTask={updateTask} questData={quest} />
         </div>
       </main>
     </>
