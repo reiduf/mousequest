@@ -35,6 +35,10 @@ export function unacceptQuest(questId: string): Promise <void> {
   return sendRequest(`${BASE_URL}/accepted-quests/${questId}`, 'DELETE', questId)
 }
 
+export function restartQuest(questId: string): Promise <void> {
+  return sendRequest(`${BASE_URL}/completed-quests/${questId}`, 'PUT')
+}
+
 // types
 interface NewQuest {
   title: string,

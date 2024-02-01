@@ -23,11 +23,16 @@ export default function ReviewQuest() {
     return <main>Loading...</main>
   }
 
-
   function handleUnaccept() {
-    questService.unacceptQuest(questId);
+    questService.unacceptQuest(questId!);
     setQuest(null);
     navigate('/quests/accepted-quests');
+  }
+
+  function handleRestart() {
+    questService.restartQuest(questId!)
+    setQuest(null);
+    navigate(`/quests/accepted-quests/${questId}`);
   }
   
   const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-8 mb-2"
@@ -56,6 +61,7 @@ export default function ReviewQuest() {
             {quest.taskProgress.length} / {quest.taskProgress.length}
           </div>
           <button 
+            onClick={handleRestart}
             className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
           >
             Restart Quest
@@ -64,7 +70,7 @@ export default function ReviewQuest() {
             className="bg-red-400 mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
             onClick={handleUnaccept} 
           >
-            Unaccept Quest
+            Delete Quest
           </button>
         </div>
       </main>

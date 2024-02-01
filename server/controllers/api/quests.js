@@ -10,6 +10,7 @@ module.exports = {
   getAcceptedQuestById,
   updateTask,
   unacceptQuest,
+  restartQuest,
 }
 
 async function create(req, res) {
@@ -76,7 +77,7 @@ async function updateTask(req, res) {
   try {
     const quest = await AcceptedQuest.findById({ _id: req.params.questId})
     quest.taskProgress = req.body.taskProgress;
-    quest.save();
+    await quest.save();
     res.sendStatus(204);
   } catch(err) {
     res.status(400).json({ err });
@@ -86,6 +87,17 @@ async function updateTask(req, res) {
 async function unacceptQuest(req, res) {
   try {
     await AcceptedQuest.findOneAndDelete({ _id: req.body })
+    res.sendStatus(204);
+  } catch(err) {
+    res.status(400).json({ err });
+  }
+}
+
+async function restartQuest(req, res) {
+  try {
+    const quest = await AcceptedQuest.findById({ _id: req.params.questId})
+    quest.taskProgress = quest.taskProgress.fill(false)
+    await quest.save();
     res.sendStatus(204);
   } catch(err) {
     res.status(400).json({ err });

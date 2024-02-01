@@ -34,7 +34,7 @@ export default function StartQuest() {
   }
 
   function handleUnaccept() {
-    questService.unacceptQuest(questId);
+    questService.unacceptQuest(questId!);
     setQuest(null);
     navigate('/quests/accepted-quests');
   }
