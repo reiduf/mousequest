@@ -74,7 +74,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
             Task Complete!
           </div>
           <button 
-            onClick={(idx) => updateTask(idx)}
+            onClick={() => updateTask(idx)}
             className="bg-red-400 mt-7 md:max-w-[8rem] py-2 text-white rounded-md text-xs uppercase tracking-widest w-1/2 mx-auto font-bold" 
           >
             Undo
@@ -82,7 +82,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
         </div>
       :
         <button 
-          onClick={(idx) => updateTask(idx)}
+          onClick={() => updateTask(idx)}
           className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
         >
           Mark Complete
