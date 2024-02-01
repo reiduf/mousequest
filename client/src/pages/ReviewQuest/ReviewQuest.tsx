@@ -23,14 +23,14 @@ export default function ReviewQuest() {
     return <main>Loading...</main>
   }
 
-  function handleUnaccept() {
-    questService.unacceptQuest(questId!);
+  async function handleUnaccept() {
+    await questService.unacceptQuest(questId!);
     setQuest(null);
     navigate('/quests/accepted-quests');
   }
 
-  function handleRestart() {
-    questService.restartQuest(questId!)
+  async function handleRestart() {
+    await questService.restartQuest(questId!)
     setQuest(null);
     navigate(`/quests/accepted-quests/${questId}`);
   }
