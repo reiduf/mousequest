@@ -31,6 +31,10 @@ export function updateTask(questData: AcceptedQuest, questId: string): Promise <
   return sendRequest(`${BASE_URL}/accepted-quests/${questId}`, 'PUT', questData)
 }
 
+export function unacceptQuest(questId: string): Promise <void> {
+  return sendRequest(`${BASE_URL}/accepted-quests/${questId}`, 'DELETE', questId)
+}
+
 // types
 interface NewQuest {
   title: string,

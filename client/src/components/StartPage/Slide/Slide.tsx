@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 import {Task} from "../../../utilities/quest-api"
 import { AcceptedQuest } from "../../../utilities/quest-api"
 
@@ -44,7 +44,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
         <div className={`${quest.taskProgress[idx] ? "bg-gray-300" : "bg-gradient-to-b from-mq-purple via-mq-purple to-mq-blue"} p-[0.3rem] rounded-lg my-5 lg:w-96 w-56 text-center`}>
           <h1 className={`${quest.taskProgress[idx] ? "text-gray-300" : "text-black"} p-3 bg-white rounded-md font-semibold text-xl`}>Task {idx +1} / {taskListLength}</h1>
         </div>
-        <svg onClick={handleForwardSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`w-10 h-10 ${activeSlide === taskListLength - 1 ? "fill-gray-400 cursor-default": "fill-black"} cursor-pointer`}>
+        <svg onClick={handleForwardSlideClick} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`w-10 h-10 ${activeSlide === taskListLength - 1 ? "fill-gray-400 cursor-default": "fill-black cursor-pointer"}`}>
           <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
         </svg>
       </div>
@@ -83,7 +83,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
       :
         <button 
           onClick={() => updateTask(idx)}
-          className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
+          className="breathe bg-mq-purple mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold" 
         >
           Mark Complete
         </button>        

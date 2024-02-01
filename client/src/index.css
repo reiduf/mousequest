@@ -32,6 +32,7 @@
   100% {transform: scale(1);}
 }
 
+
 .breathe:hover {
   animation: breathe 0.95s infinite;
 }
@@ -39,6 +40,8 @@
 .breathe-sm {
   animation: breathe-sm 1.5s infinite;
 }
+
+
 
 ::-webkit-scrollbar {
   width: 0px;

@@ -1,5 +1,5 @@
 import castleUrl from '../../img/castle.webp';
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { AcceptedQuest } from "../../utilities/quest-api";
@@ -9,6 +9,7 @@ export default function StartQuest() {
     //questId grabbed from url
   const {questId} = useParams();
   const [quest, setQuest] = useState<AcceptedQuest | null>(null);
+  const navigate = useNavigate(); 
     
   useEffect(() => {
     async function getQuest() {
@@ -31,6 +32,12 @@ export default function StartQuest() {
     setQuest(newQuest)
     questService.updateTask(quest, questId!);
   }
+
+  function handleUnaccept() {
+    questService.unacceptQuest(questId);
+    setQuest(null);
+    navigate('/quests/accepted-quests');
+  }
   
   return (
     <>
@@ -48,7 +55,7 @@ export default function StartQuest() {
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
-          <SlideDeck updateTask={updateTask} questData={quest} />
+          <SlideDeck updateTask={updateTask} questData={quest} handleUnaccept={handleUnaccept}/>
         </div>
       </main>
     </>
