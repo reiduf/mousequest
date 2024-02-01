@@ -3,9 +3,9 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { AcceptedQuest } from "../../utilities/quest-api";
-import SlideDeck from "../../components/StartPage/SlideDeck/SlideDeck"
 
-export default function StartQuest() {
+
+export default function ReviewQuest() {
     //questId grabbed from url
   const {questId} = useParams();
   const [quest, setQuest] = useState<AcceptedQuest | null>(null);
@@ -23,15 +23,6 @@ export default function StartQuest() {
     return <main>Loading...</main>
   }
 
-  function updateTask(idx: number) {
-    if (!quest) return;
-    const newQuest = {
-      ...quest
-    }
-    newQuest.taskProgress[idx] = !(newQuest.taskProgress[idx]);
-    setQuest(newQuest)
-    questService.updateTask(quest, questId!);
-  }
 
   function handleUnaccept() {
     questService.unacceptQuest(questId);
@@ -39,6 +30,7 @@ export default function StartQuest() {
     navigate('/quests/accepted-quests');
   }
   
+  const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-8 mb-2"
   
   return (
     <>
@@ -56,7 +48,24 @@ export default function StartQuest() {
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
-          <SlideDeck updateTask={updateTask} questData={quest} handleUnaccept={handleUnaccept}/>
+          <h1 className={headerStyle}>Description</h1>
+          <p className="xl:max-w-4xl text-justify text-md leading-7">{quest.quest.description}</p>
+          
+          <h1 className={headerStyle}>Total tasks completed</h1>
+          <div className="2xl:w-1/6 xl:w-1/4 lg:w-1/3 w-3/4 text-center">
+            {quest.taskProgress.length} / {quest.taskProgress.length}
+          </div>
+          <button 
+            className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+          >
+            Restart Quest
+          </button>
+          <button 
+            className="bg-red-400 mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+            onClick={handleUnaccept} 
+          >
+            Unaccept Quest
+          </button>
         </div>
       </main>
     </>

@@ -10,6 +10,7 @@ const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-
 
 
 export default function StarterSlide({quest, setActiveSlide, handleUnaccept}: Props) {
+  const isCompleted = quest.taskProgress.every(task => task)
   const overviewList = quest.taskProgress.map((task, idx) => 
     <>
       <div onClick={() => setActiveSlide(idx)} className="grid grid-cols-2 my-1 cursor-pointer">
@@ -33,7 +34,7 @@ export default function StarterSlide({quest, setActiveSlide, handleUnaccept}: Pr
         className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
         onClick={() => setActiveSlide(0)} 
       >
-        Start Quest
+        {isCompleted ? "Review Quest" : "Start Quest"}
       </button>
       <button 
         className="bg-red-400 mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"

@@ -10,6 +10,7 @@ import MyProfile from './pages/MyProfile/MyProfile';
 import Logo from "./assets/logo-mobile.svg?react"
 import QuestDetail from "./pages/QuestDetail/QuestDetail"
 import StartQuest from "./pages/StartQuest/StartQuest"
+import ReviewQuest from './pages/ReviewQuest/ReviewQuest';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/quests/accepted-quests" element={<MyQuests />} />
             <Route path="/myprofile" element={<MyProfile user={user} />} />
             <Route path="/quests/accepted-quests/:questId" element={<StartQuest />} />
+            <Route path="/quests/completed-quests/:questId" element={<ReviewQuest />} />
           </Routes>
         </>
         :
