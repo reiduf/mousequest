@@ -12,7 +12,8 @@ module.exports = {
   updateTask,
   unacceptQuest,
   restartQuest,
-  updateLikes
+  updateLikes,
+  search,
 }
 
 async function create(req, res) {
@@ -142,6 +143,16 @@ async function updateLikes(req, res) {
     res.json(response)
   } catch(err) {
     console.log(err)
+    res.status(400).json({ err });
+  }
+}
+
+async function search(req, res) {
+  try {
+    const search = req.query.search
+    const results = await Quest.find({$text: {$search: search}}).populate('author').limit(10).exec();
+    res.json(results)
+  } catch(err) {
     res.status(400).json({ err });
   }
 }

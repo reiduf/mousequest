@@ -6,6 +6,8 @@ import { Quest } from "../../utilities/quest-api";
 
 export default function FindQuests() {
   const [popQuests, setPopQuests] = useState<Quest[]>([])
+  const [searchString, setSearchString] = useState("")
+  const [searchRes, setSearchRes] = useState<Quest[]>([])
 
   useEffect(() => {
     async function getPopQuests() {
@@ -14,6 +16,13 @@ export default function FindQuests() {
     }
     getPopQuests();
   }, [])
+
+  async function handleKeyPress(evt: React.KeyboardEvent<HTMLInputElement>) {
+    if(evt.key === 'Enter'){
+      const results = await questService.searchQuests(searchString);
+      setSearchRes(results)
+    }
+  }
 
   return (
     <main className="mq-bg">
@@ -26,12 +35,21 @@ export default function FindQuests() {
           </svg>
         </label>
         <input 
+          value={searchString}
+          onChange={(evt) => {
+            if (!evt.target.value) {
+              setSearchRes([])
+            }
+            setSearchString(evt.target.value)
+          }}
+          onKeyDown={handleKeyPress}
+          name="search"
           className="xl:w-1/2 w-full rounded-full px-4 pr-10 p-2"
           type="text" 
           placeholder="Search..."
         />
       </div>
-      <SearchResultsList popQuests={popQuests} />
+      <SearchResultsList searchRes={searchRes} />
 
       <div className="flex flex-col text-center items-center p-3 pt-5 mt-5 pb-0 gap-20 justify-center">
         <h2 className="mq-title">Most Popular Quests</h2>

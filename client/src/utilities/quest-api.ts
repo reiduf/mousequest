@@ -43,6 +43,10 @@ export function updateLikes(questId: string): Promise<{quest: Quest, userLiked: 
   return sendRequest(`${BASE_URL}/${questId}`, 'POST')
 }
 
+export function searchQuests(search: string):  Promise<Quest[]> {
+  return sendRequest(`${BASE_URL}?search=${search}`, 'GET')
+}
+
 // types
 interface NewQuest {
   title: string,

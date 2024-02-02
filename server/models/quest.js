@@ -44,4 +44,6 @@ const questSchema = new Schema({
   timestamps: true,
 });
 
+questSchema.index({title: 'text', description: 'text'})
+
 module.exports = mongoose.model('Quest', questSchema);

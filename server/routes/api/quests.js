@@ -3,6 +3,7 @@ const router = express.Router();
 const questsCtrl = require('../../controllers/api/quests');
 
 //all got to /quests/...
+router.get('/', questsCtrl.search)
 router.post('/new', questsCtrl.create);
 router.get('/mostpopular', questsCtrl.getMostPopularQuest);
 router.post('/accepted-quests', questsCtrl.acceptQuest);
