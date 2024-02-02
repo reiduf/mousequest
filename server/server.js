@@ -27,7 +27,7 @@ app.use('/api/quests', ensureLoggedIn, require('./routes/api/quests'))
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(clientDirectory, 'index.html'));
 });
 
  const port = process.env.PORT || 3001;
