@@ -39,11 +39,17 @@ const questSchema = new Schema({
     type: Number,
     required: false,
     default: 0,
-  }
+  },
+  tagSearch: {
+    type: String,
+    default: function () {
+      return Object.keys(this.tags).filter(tag => this.tags[tag]).join(" ")
+    }
+  },
 }, {
   timestamps: true,
 });
 
-questSchema.index({title: 'text', description: 'text'})
+questSchema.index({title: 'text', description: 'text', tagSearch: 'text'})
 
 module.exports = mongoose.model('Quest', questSchema);

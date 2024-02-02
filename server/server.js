@@ -11,11 +11,11 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json({ strict: false }));
 
-const clientDirectory = path.join(__dirname, '..', 'client');
+const clientDirectory = path.join(__dirname, '..', 'client', 'dist');
 
  // Configure both serve-favicon & static middleware
  // to serve from the production 'build' folder
- app.use(favicon(path.join(clientDirectory, 'public', 'favicon.ico')));
+ app.use(favicon(path.join(clientDirectory, 'favicon.ico')));
  app.use(express.static(clientDirectory));
  app.use(require('./config/checkToken'));
 
