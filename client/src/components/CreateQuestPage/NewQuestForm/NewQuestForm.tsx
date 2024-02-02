@@ -62,8 +62,9 @@ export default function NewQuestForm() {
   return (
     <main className="flex flex-col justify-center items-center">
 
-      <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title</label>
+      <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title <span className="text-red-400 font-normal">*</span></label>
       <input 
+        required
         placeholder="Quest title..." 
         className="font-bold p-3 mb-3 text-center rounded-md w-full 2xl:w-1/3 md:w-1/2" 
         name="title" 
@@ -71,8 +72,9 @@ export default function NewQuestForm() {
         onChange={(evt) => setTitle(evt.target.value)}
       />
 
-      <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">2. Add a Description for your quest</label>
+      <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">2. Add a Description for your quest <span className="text-red-400 font-normal">*</span></label>
       <textarea 
+        required
         placeholder="Quest description..." 
         className="p-3 mb-3 h-28 rounded-md w-full 2xl:w-1/3 md:w-1/2" 
         name="title"

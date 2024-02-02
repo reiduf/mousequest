@@ -41,7 +41,9 @@
   animation: breathe-sm 1.5s infinite;
 }
 
-
+*:required {
+  @apply border-2 border-red-400;
+}
 
 ::-webkit-scrollbar {
   width: 0px;

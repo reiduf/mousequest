@@ -11,6 +11,7 @@ router.put('/accepted-quests/:questId', questsCtrl.updateTask);
 router.get('/accepted-quests/:questId', questsCtrl.getAcceptedQuestById);
 router.delete('/accepted-quests/:questId', questsCtrl.unacceptQuest);
 router.put('/completed-quests/:questId', questsCtrl.restartQuest);
+router.post('/:questId', questsCtrl.updateLikes);
 router.get('/:questId', questsCtrl.getQuestById);
 
 module.exports = router;

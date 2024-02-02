@@ -11,7 +11,7 @@ export async function getMostPopQuests(): Promise<Quest[]> {
   return sendRequest(`${BASE_URL}/mostpopular`, 'GET')
 }
 
-export async function getQuestById(questId: string): Promise<Quest> {
+export async function getQuestById(questId: string): Promise<{quest: Quest, userLiked: boolean}> {
   return sendRequest(`${BASE_URL}/${questId}`);
 }
 
@@ -37,6 +37,10 @@ export function unacceptQuest(questId: string): Promise <void> {
 
 export function restartQuest(questId: string): Promise <void> {
   return sendRequest(`${BASE_URL}/completed-quests/${questId}`, 'PUT')
+}
+
+export function updateLikes(questId: string): Promise<{quest: Quest, userLiked: boolean}> {
+  return sendRequest(`${BASE_URL}/${questId}`, 'POST')
 }
 
 // types

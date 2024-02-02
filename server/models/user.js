@@ -19,6 +19,11 @@ const userSchema = new Schema({
     minLength: 3,
     required: true,
   },
+  likedQuests: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Quest',
+    required: true,
+  }]
 }, {
   timestamps: true,
   toJSON: {

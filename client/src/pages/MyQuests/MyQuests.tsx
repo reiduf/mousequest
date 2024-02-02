@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function MyQuests() {
   const [activeQuests, setActiveQuests] = useState<AcceptedQuest[]>([])
   const [completedQuests, setCompletedQuests] = useState<AcceptedQuest[]>([])
-  const [showCompletedList, setShowCompletedList] = useState(false);
+  const [showCompletedList, setShowCompletedList] = useState(true);
   
 
   useEffect(() => {

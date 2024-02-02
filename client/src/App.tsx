@@ -22,7 +22,7 @@ function App() {
         user ?
         <>
           <NavBar setUser={setUser} />
-          <header className="lg:hidden order-1 p-1 flex justify-center items-center">
+          <header className="lg:hidden order-1 p-1 flex justify-center shadow-xl items-center">
             <Link className="py-2" to="/quests"><Logo /></Link>
           </header>
           <Routes>

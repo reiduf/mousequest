@@ -1,5 +1,6 @@
 const AcceptedQuest = require('../../models/acceptedQuest');
-const Quest = require('../../models/quest')
+const Quest = require('../../models/quest');
+const User = require('../../models/user')
 
 module.exports = {
   create,
@@ -11,6 +12,7 @@ module.exports = {
   updateTask,
   unacceptQuest,
   restartQuest,
+  updateLikes
 }
 
 async function create(req, res) {
@@ -27,14 +29,21 @@ async function create(req, res) {
 }
 
 async function getMostPopularQuest(req, res) {
-  const popQuests = await Quest.find({ likes: { $gte: 50 }}).exec();
+  const popQuests = await Quest.find({}).exec();
   res.json(popQuests);
 }
 
 async function getQuestById(req, res) {
   const quest = await Quest.findById({ _id: req.params.questId})
+  const user = await User.findById({ _id: req.user._id })
+    
   await quest.populate('author')
-  res.json(quest)
+  
+  const response = {
+    quest,
+    userLiked: user.likedQuests.includes(req.params.questId),
+  }
+  res.json(response)
 }
 
 async function getAcceptedQuestById(req, res) {
@@ -100,6 +109,38 @@ async function restartQuest(req, res) {
     await quest.save();
     res.sendStatus(204);
   } catch(err) {
+    res.status(400).json({ err });
+  }
+}
+
+async function updateLikes(req, res) {
+  try {
+    const quest = await Quest.findById({ _id: req.params.questId });
+    const user = await User.findById({ _id: req.user._id })
+    
+    if (user.likedQuests.includes(req.params.questId)) {
+      console.log(user.likedQuests)
+      user.likedQuests = user.likedQuests.filter(id => id.toString() !== req.params.questId)
+      console.log(user.likedQuests)
+      quest.likes -= 1
+      quest.userLiked = false;
+    } else {
+      user.likedQuests.push(req.params.questId);
+      quest.likes += 1
+      quest.userLiked = true;
+    }
+    await user.save();
+    await quest.save();
+    await quest.populate('author')
+
+    const response = {
+      quest,
+      userLiked: user.likedQuests.includes(req.params.questId),
+    }
+
+    res.json(response)
+  } catch(err) {
+    console.log(err)
     res.status(400).json({ err });
   }
 }

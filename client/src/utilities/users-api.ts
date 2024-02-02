@@ -1,7 +1,6 @@
 import sendRequest from "./send-request"
 const BASE_URL = '/api/users'
 
-
 export interface UserData {
   name: string;
   email: string;
