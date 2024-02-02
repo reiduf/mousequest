@@ -61,7 +61,7 @@ export default function NewQuestForm() {
 
   return (
     <main className="flex flex-col justify-center items-center">
-
+      
       <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title <span className="text-red-400 font-normal">*</span></label>
       <input 
         required

@@ -13,9 +13,6 @@ export default function TaskItem({task, seq, deleteTask}: Props) {
           <div className="uppercase rounded-tl-md font-semibold text-sm tracking-widest bg-mq-purple text-white flex items-center justify-center p-1 px-3 ">
             Task {seq}
           </div>
-          <div className="uppercase font-semibold text-sm tracking-widest bg-blue-900 text-white flex items-center justify-center p-1 px-3 cursor-pointer">
-            Edit
-          </div>
           <div onClick={() => deleteTask(seq - 1)} className="uppercase rounded-br-md font-semibold text-sm tracking-widest bg-red-600 text-white flex items-center justify-center p-1 px-3 cursor-pointer">
             Delete
           </div>
