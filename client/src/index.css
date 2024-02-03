@@ -42,7 +42,7 @@
 }
 
 *:required {
-  @apply border-2 border-red-400;
+  @apply border-2 border-mq-purple;
 }
 
 ::-webkit-scrollbar {
