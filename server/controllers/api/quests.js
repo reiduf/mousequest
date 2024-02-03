@@ -38,12 +38,15 @@ async function getMostPopularQuest(req, res) {
 async function getQuestById(req, res) {
   const quest = await Quest.findById({ _id: req.params.questId})
   const user = await User.findById({ _id: req.user._id })
+  const acceptedQuests = await AcceptedQuest.find({ quest: req.params.questId, user: user._id }).exec()
+  const isAccepted = acceptedQuests.length > 0
     
   await quest.populate('author')
   
   const response = {
     quest,
     userLiked: user.likedQuests.includes(req.params.questId),
+    isAccepted, 
   }
   res.json(response)
 }

@@ -5,11 +5,15 @@ import * as questService from "../../utilities/quest-api"
 import { Quest } from "../../utilities/quest-api";
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 export default function QuestDetail() {
   //questId grabbed from url
   const {questId} = useParams();
   const [quest, setQuest] = useState<Quest | null>(null);
-  const [userLiked, setUserLiked] = useState(false)
+  const [userLiked, setUserLiked] = useState(false);
+  const [userAccepted, setUserAccepted] = useState(false);
   const navigate = useNavigate();
     
   
@@ -17,9 +21,11 @@ export default function QuestDetail() {
     async function getQuest() {
       //use params of quest id here for getquestbyid
       const res = await questService.getQuestById(questId!);
-      const quest = res.quest
+      const quest = res.quest;
+      const isAccepted = res.isAccepted;
       setQuest(quest);
       setUserLiked(res.userLiked);
+      setUserAccepted(isAccepted)
     }
     getQuest();
   }, [questId])
@@ -110,12 +116,21 @@ export default function QuestDetail() {
           </p>
 
 
-          <button 
+          {!userAccepted ?
+           <button 
             className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
             onClick={handleAccept} 
             >
             Accept Quest
           </button>
+          :
+           <button 
+            className="bg-gray-400 mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-xs uppercase tracking-widest w-1/2 mx-auto font-bold"
+            disabled
+            >
+            You've Already Accepted This quest
+          </button>
+          }
         </div>
       </main>
     </>

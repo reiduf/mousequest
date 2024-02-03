@@ -11,7 +11,7 @@ export async function getMostPopQuests(): Promise<Quest[]> {
   return sendRequest(`${BASE_URL}/mostpopular`, 'GET')
 }
 
-export async function getQuestById(questId: string): Promise<{quest: Quest, userLiked: boolean}> {
+export async function getQuestById(questId: string): Promise<{quest: Quest, userLiked: boolean, isAccepted: boolean}> {
   return sendRequest(`${BASE_URL}/${questId}`);
 }
 
