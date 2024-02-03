@@ -74,7 +74,9 @@ async function getAcceptedQuests(req, res) {
 
 async function acceptQuest(req, res) {
   try {
-    const reffdQuest = await Quest.findOne({_id: req.body})
+    const reffdQuest = await Quest.findOne({_id: req.body});
+    reffdQuest.accepted += 1;
+    reffdQuest.save();
     const newQuest = {
       user: req.user._id,
       quest: reffdQuest._id,
