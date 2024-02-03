@@ -8,6 +8,7 @@ export default function FindQuests() {
   const [popQuests, setPopQuests] = useState<Quest[]>([])
   const [searchString, setSearchString] = useState("")
   const [searchRes, setSearchRes] = useState<Quest[]>([])
+  const [showNoRes, setShowNoRes] = useState(false)
 
   useEffect(() => {
     async function getPopQuests() {
@@ -21,8 +22,17 @@ export default function FindQuests() {
     if(evt.key === 'Enter'){
       const results = await questService.searchQuests(searchString);
       setSearchRes(results)
+      results.length === 0 ? setShowNoRes(true) : setShowNoRes(false);
     }
   }
+
+  async function handleTagClick(tagName: string) {
+    const results = await questService.searchQuests(tagName);
+    setSearchRes(results);
+    results.length === 0 ? setShowNoRes(true) : setShowNoRes(false);
+  }
+
+  const tagStyle = "py-2 px-3 uppercase bg-white text-mq-purple font-extrabold rounded-md text-xs inline-block mx-1 my-1 cursor-pointer"
 
   return (
     <main className="mq-bg">
@@ -41,6 +51,7 @@ export default function FindQuests() {
               setSearchRes([])
             }
             setSearchString(evt.target.value)
+            setShowNoRes(false)
           }}
           onKeyDown={handleKeyPress}
           name="search"
@@ -48,8 +59,24 @@ export default function FindQuests() {
           type="text" 
           placeholder="Search..."
         />
+        <div className="mt-2">
+          <button onClick={() => handleTagClick("kids")}className={tagStyle}>Good for kids</button>
+          <button onClick={() => handleTagClick("adults")}className={tagStyle}>good for adults</button>
+          <button onClick={() => handleTagClick("families")}className={tagStyle}>good for families</button>
+          <button onClick={() => handleTagClick("ca")}className={tagStyle}>ca adv.</button>
+          <button onClick={() => handleTagClick("disneyland")}className={tagStyle}>disneyland</button>
+          <button onClick={() => handleTagClick("short")}className={tagStyle}>short quests</button>
+          <button onClick={() => handleTagClick("long")}className={tagStyle}>long quests</button>
+          <button onClick={() => handleTagClick("easy")}className={tagStyle}>easy quests</button>
+          <button onClick={() => handleTagClick("hard")}className={tagStyle}>hard quests</button>
+          <button onClick={() => handleTagClick("mickeys")}className={tagStyle}>hidden mickeys</button>
+          <button onClick={() => handleTagClick("queue")}className={tagStyle}>queue line quests</button>
+          <button onClick={() => handleTagClick("riddles")}className={tagStyle}>riddles</button>
+        </div>
       </div>
-      <SearchResultsList searchRes={searchRes} />
+
+     <SearchResultsList searchRes={searchRes} /> 
+     {showNoRes && <p className="text-center my-5 text-white">Sorry, no results for this search.</p>}
 
       <div className="flex flex-col text-center items-center p-3 pt-5 mt-5 pb-0 gap-20 justify-center">
         <h2 className="mq-title">Most Popular Quests</h2>
