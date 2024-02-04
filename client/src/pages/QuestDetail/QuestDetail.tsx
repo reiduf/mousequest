@@ -80,8 +80,8 @@ export default function QuestDetail() {
   return (
     <>
       <main className="bg-mq-boring overflow-scroll md:h-screen h-[140vh]">
-        <div className="relative flex justify-center items-center w-full mx-auto bg-center h-80 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
-          <div className="h-1/2 2xl:w-1/2 flex items-center backdrop-blur-sm justify-center bg-white/60 w-5/6 rounded-md p-2 text-center">
+        <div className="relative flex justify-center items-center w-full mx-auto bg-center lg:h-80 h-60 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
+          <div className="h-fit py-8 lg:h-1/2 2xl:w-1/2 flex items-center backdrop-blur-sm justify-center bg-white/50 w-5/6 rounded-md p-2  text-center">
             <p className="text-2xl xl:text-4xl capitalize font-medium">{quest.title}</p> 
           </div>
           <div className="absolute font-bold left-3 bottom-3 flex gap-3">

@@ -48,8 +48,8 @@ export default function StartQuest() {
   return (
     <>
       <main className="bg-mq-boring overflow-scroll md:h-screen h-[140vh]">
-        <div className="relative flex justify-center items-center w-full mx-auto bg-center h-80 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
-          <div className="h-1/2 2xl:w-1/2 flex items-center backdrop-blur-sm justify-center bg-white/60 w-5/6 rounded-md p-[0.65rem] text-center">
+        <div className="relative flex justify-center items-center w-full mx-auto bg-center lg:h-80 h-60 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
+          <div className="h-fit py-8 lg:h-1/2 2xl:w-1/2 flex items-center backdrop-blur-sm justify-center bg-white/60 w-5/6 rounded-md p-[0.65rem] text-center">
             <p className="text-2xl xl:text-4xl capitalize font-medium">{quest.quest.title}</p> 
           </div>
          

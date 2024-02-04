@@ -62,7 +62,7 @@ export default function Slide({taskData, idx, setActiveSlide, activeSlide, taskL
       </div>
       
       <div className={`${quest.taskProgress[idx] ? "bg-gray-300" : "bg-gradient-to-t from-mq-purple via-mq-purple to-mq-blue"} p-[0.3rem] rounded-lg  xl:w-1/3 w-full`}>
-        <div className={`${quest.taskProgress[idx] ? "text-gray-300" : "text-black"} bg-white lg:p-8 p-5 pt-6 rounded-t-md text-center lg:text-xl text-lg lg:leading-10 leading-8 w-full`}>
+        <div className={`${quest.taskProgress[idx] ? "text-gray-300" : "text-black"} bg-white lg:p-8 p-5 pt-6 rounded-md text-center lg:text-xl text-lg lg:leading-10 leading-8 w-full`}>
           <p>{taskData.description}</p>
         </div>
           {taskData.hint && 

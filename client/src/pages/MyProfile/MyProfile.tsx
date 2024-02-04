@@ -58,7 +58,7 @@ export default function MyProfile({user}: Props) {
   
 return (
   <main className="bg-mq-boring overflow-scroll md:h-screen h-[140vh]">
-    <div className="relative flex justify-center items-center w-full mx-auto bg-center h-80 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
+    <div className="relative flex justify-center items-center w-full mx-auto bg-center lg:h-80 h-60 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
       <div className="lg:w-48 lg:h-48 h-32 w-32 bg-no-repeat bg-cover border-[3px] border-white rounded-full absolute bottom-[-5rem] lg:bottom-[-6rem]" style={{backgroundImage: `url('${picoUrl}')`}} ></div>          
     </div>
     <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col mb-28 justify-end"></div>

@@ -33,7 +33,7 @@ export default function FindQuests() {
     results.length === 0 ? setShowNoRes(true) : setShowNoRes(false);
   }
 
-  const tagStyle = "py-2 px-3 uppercase bg-white text-mq-purple font-extrabold rounded-md text-xs inline-block mx-1 my-1 cursor-pointer"
+  const tagStyle = "shrink-0 py-2 px-3 uppercase bg-white text-mq-purple font-extrabold rounded-md text-xs inline-block mx-1 my-1 cursor-pointer"
 
   return (
     <main className="mq-bg">
@@ -60,7 +60,7 @@ export default function FindQuests() {
           type="text" 
           placeholder="Search..."
         />
-        <div className="mt-2">
+        <div className="mt-2 w-full flex gap-1 snap-x scroll-pl-6 overflow-x-auto">
           <button onClick={() => handleTagClick("kids")}className={tagStyle}>Good for kids</button>
           <button onClick={() => handleTagClick("adults")}className={tagStyle}>good for adults</button>
           <button onClick={() => handleTagClick("families")}className={tagStyle}>good for families</button>
