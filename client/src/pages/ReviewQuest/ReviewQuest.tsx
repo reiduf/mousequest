@@ -10,6 +10,8 @@ export default function ReviewQuest() {
     //questId grabbed from url
   const {questId} = useParams();
   const [quest, setQuest] = useState<AcceptedQuest | null>(null);
+  const [restarting, setRestarting] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const navigate = useNavigate(); 
     
   useEffect(() => {
@@ -21,15 +23,25 @@ export default function ReviewQuest() {
   }, [questId])
 
   async function handleUnaccept() {
-    await questService.unacceptQuest(questId!);
-    setQuest(null);
-    navigate('/quests/accepted-quests');
+    setDeleting(true)
+    try {
+      await questService.unacceptQuest(questId!);
+      setQuest(null);
+      navigate('/quests/accepted-quests');
+    } finally {
+      setDeleting(false)
+    }
   }
 
   async function handleRestart() {
-    await questService.restartQuest(questId!)
-    setQuest(null);
-    navigate(`/quests/accepted-quests/${questId}`);
+    setRestarting(true)
+    try {
+      await questService.restartQuest(questId!)
+      setQuest(null);
+      navigate(`/quests/accepted-quests/${questId}`);
+    } finally {
+      setRestarting(false)
+    }
   }
 
   if (!quest) {
@@ -66,15 +78,17 @@ export default function ReviewQuest() {
           </div>
           <button 
             onClick={handleRestart}
-            className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+            disabled={restarting}
+            className={`${restarting ? "bg-gray-400" : "bg-gradient-to-b breathe from-mq-purple to-mq-blue"} mt-7 px-7 md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold`}
           >
-            Restart Quest
+            {restarting ? "Restarting Quest..." : "Restart Quest"}
           </button>
           <button 
-            className="bg-red-400 mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+            className={`${deleting ? "bg-gray-400" : "bg-red-400"} mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold`}
+            disabled={deleting}
             onClick={handleUnaccept} 
           >
-            Delete Quest
+            {deleting ? "Deleting Quest..." : "Delete quest"}
           </button>
         </div>
       </main>
