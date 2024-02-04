@@ -72,7 +72,7 @@ export default function NewQuestForm() {
         value={title}
         onChange={(evt) => setTitle(evt.target.value)}
       />
-      <p className="text-[0.65rem] uppercase mt-[-0.8rem] w-full 2xl:w-1/3 md:w-1/2 px-1 text-right">{title.length} / 35 max</p>
+      <p className={`${title.length === 35 && "text-red-400"} text-[0.65rem] mt-[-0.8rem] w-full 2xl:w-1/3 md:w-1/2 px-1 text-right`}>{35 - title.length} / 35 chars left</p>
 
       <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">2. Add a Description for your quest <span className="text-red-400 font-normal">*</span></label>
       <textarea 
