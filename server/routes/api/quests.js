@@ -4,6 +4,8 @@ const questsCtrl = require('../../controllers/api/quests');
 
 //all got to /quests/...
 router.get('/', questsCtrl.search)
+router.get('/liked-quests', questsCtrl.getLikedQuests)
+router.get('/created-quests', questsCtrl.getCreatedQuests)
 router.post('/new', questsCtrl.create);
 router.get('/mostpopular', questsCtrl.getMostPopularQuest);
 router.post('/accepted-quests', questsCtrl.acceptQuest);
@@ -14,5 +16,6 @@ router.delete('/accepted-quests/:questId', questsCtrl.unacceptQuest);
 router.put('/completed-quests/:questId', questsCtrl.restartQuest);
 router.post('/:questId', questsCtrl.updateLikes);
 router.get('/:questId', questsCtrl.getQuestById);
+
 
 module.exports = router;

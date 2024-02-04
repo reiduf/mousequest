@@ -47,6 +47,14 @@ export function searchQuests(search: string):  Promise<Quest[]> {
   return sendRequest(`${BASE_URL}?search=${search}`, 'GET')
 }
 
+export function getCreatedQuests(): Promise<Quest[]> {
+  return sendRequest(`${BASE_URL}/created-quests`, 'GET')
+}
+
+export function getLikedQuests(): Promise<Quest[]> {
+  return sendRequest(`${BASE_URL}/liked-quests`, 'GET')
+}
+
 // types
 interface NewQuest {
   title: string,

@@ -14,6 +14,8 @@ module.exports = {
   restartQuest,
   updateLikes,
   search,
+  getCreatedQuests,
+  getLikedQuests,
 }
 
 async function create(req, res) {
@@ -161,6 +163,30 @@ async function search(req, res) {
     const search = req.query.search
     const results = await Quest.find({$text: {$search: search}}).populate('author').limit(10).exec();
     res.json(results)
+  } catch(err) {
+    res.status(400).json({ err });
+  }
+}
+
+async function getCreatedQuests(req, res) {
+  try {
+    const quests = await Quest.find({author: req.user._id}).populate('author');
+    res.json(quests)
+  } catch(err) {
+    res.status(400).json({ err });
+  }
+}
+
+async function getLikedQuests(req, res) {
+  try {
+    const user = await User.findOne({ _id: req.user._id }).populate({
+      path: 'likedQuests',
+      populate: {
+        path: 'author'
+      }
+    }).exec();
+
+    res.json(user.likedQuests)
   } catch(err) {
     res.status(400).json({ err });
   }
