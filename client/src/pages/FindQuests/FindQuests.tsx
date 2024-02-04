@@ -60,7 +60,7 @@ export default function FindQuests() {
           type="text" 
           placeholder="Search..."
         />
-        <div className="mt-2 w-full flex gap-1 snap-x scroll-pl-6 overflow-x-auto">
+        <div className="mt-2 lg:w-auto w-full lg:block flex gap-1 snap-x scroll-pl-6 overflow-x-auto">
           <button onClick={() => handleTagClick("kids")}className={tagStyle}>Good for kids</button>
           <button onClick={() => handleTagClick("adults")}className={tagStyle}>good for adults</button>
           <button onClick={() => handleTagClick("families")}className={tagStyle}>good for families</button>
