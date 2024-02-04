@@ -60,9 +60,7 @@ return (
     <div className="relative flex justify-center items-center w-full mx-auto bg-center h-80 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
       <div className="lg:w-48 lg:h-48 h-32 w-32 bg-no-repeat bg-cover border-[3px] border-white rounded-full absolute bottom-[-5rem] lg:bottom-[-6rem]" style={{backgroundImage: `url('${picoUrl}')`}} ></div>          
     </div>
-    <div className="h-[0.65rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col mb-28 justify-end">
-      <div className="h-[0.45rem] bg-mq-boring"></div>
-    </div>
+    <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col mb-28 justify-end"></div>
     
     <section className="px-5">
       <h1 className="text-center font-semibold text-3xl">{user.name}</h1>
