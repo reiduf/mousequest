@@ -76,7 +76,7 @@ async function acceptQuest(req, res) {
   try {
     const reffdQuest = await Quest.findOne({_id: req.body});
     reffdQuest.accepted += 1;
-    reffdQuest.save();
+    await reffdQuest.save();
     const newQuest = {
       user: req.user._id,
       quest: reffdQuest._id,
@@ -102,6 +102,10 @@ async function updateTask(req, res) {
 
 async function unacceptQuest(req, res) {
   try {
+    const accptdQuest = await AcceptedQuest.findOne({_id: req.body}).populate('quest');
+    const reffdQuest = accptdQuest.quest
+    reffdQuest.accepted -= 1;
+    await reffdQuest.save();
     await AcceptedQuest.findOneAndDelete({ _id: req.body })
     res.sendStatus(204);
   } catch(err) {

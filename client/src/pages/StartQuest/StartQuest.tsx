@@ -33,8 +33,8 @@ export default function StartQuest() {
     questService.updateTask(quest, questId!);
   }
 
-  function handleUnaccept() {
-    questService.unacceptQuest(questId!);
+  async function handleUnaccept() {
+    await questService.unacceptQuest(questId!);
     setQuest(null);
     navigate('/quests/accepted-quests');
   }
