@@ -64,7 +64,7 @@ export default function NewQuestForm() {
       
       <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title <span className="text-red-400 font-normal">*</span></label>
       <input 
-        maxLength="35"
+        maxLength={35}
         required
         placeholder="Quest title..." 
         className="font-bold p-3 mb-3 text-center rounded-md w-full 2xl:w-1/3 md:w-1/2" 
