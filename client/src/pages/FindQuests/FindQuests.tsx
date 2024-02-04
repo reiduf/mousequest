@@ -3,9 +3,10 @@ import MostPopList from "../../components/FindQuestsPage/MostPopList";
 import SearchResultsList from "../../components/FindQuestsPage/SearchResultsList";
 import * as questService from "../../utilities/quest-api"
 import { Quest } from "../../utilities/quest-api";
+import Loader from "../../components/Loader/Loader";
 
 export default function FindQuests() {
-  const [popQuests, setPopQuests] = useState<Quest[]>([])
+  const [popQuests, setPopQuests] = useState<Quest[] | null>(null)
   const [searchString, setSearchString] = useState("")
   const [searchRes, setSearchRes] = useState<Quest[]>([])
   const [showNoRes, setShowNoRes] = useState(false)
@@ -81,7 +82,8 @@ export default function FindQuests() {
       <div className="flex flex-col text-center items-center p-3 pt-5 mt-5 pb-0 gap-20 justify-center">
         <h2 className="mq-title">Most Popular Quests</h2>
       </div>
-      <MostPopList popQuests={popQuests} /> 
+
+      { popQuests ? <MostPopList popQuests={popQuests} /> : <Loader />}
     </main>
   );
 }

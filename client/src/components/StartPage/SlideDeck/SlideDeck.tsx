@@ -6,7 +6,7 @@ import Slide from "../Slide/Slide"
 interface Props {
   questData: AcceptedQuest,
   updateTask: (idx: number) => void,
-  handleUnaccept: () => void,
+  handleUnaccept: () => Promise <void>,
 }
 
 type TaskIndex = number;

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { AcceptedQuest } from "../../utilities/quest-api";
 import SlideDeck from "../../components/StartPage/SlideDeck/SlideDeck"
+import Loader from '../../components/Loader/Loader';
 
 export default function StartQuest() {
     //questId grabbed from url
@@ -18,10 +19,6 @@ export default function StartQuest() {
     }
     getQuest();
   }, [questId])
-
-  if (!quest) {
-    return <main>Loading...</main>
-  }
 
   function updateTask(idx: number) {
     if (!quest) return;
@@ -39,6 +36,14 @@ export default function StartQuest() {
     navigate('/quests/accepted-quests');
   }
   
+  if (!quest) {
+    return (
+      <main className="h-screen mq-bg">
+        <h1 className="text-center text-5xl uppercase font-black tracking-wider mt-8 mb-2">Start Quest</h1>
+        <Loader />
+      </main>
+    )
+  }
   
   return (
     <>
@@ -50,9 +55,7 @@ export default function StartQuest() {
          
         </div>
         {/* gradient line wrapper */}
-        <div className="h-[0.65rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col justify-end">
-          <div className="h-[0.45rem] bg-mq-boring"></div>
-        </div>
+        <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col justify-end"></div>
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">

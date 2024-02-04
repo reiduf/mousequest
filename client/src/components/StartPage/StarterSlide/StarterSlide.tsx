@@ -1,15 +1,17 @@
-import { AcceptedQuest } from "../../../utilities/quest-api";
+import { AcceptedQuest } from "../../../utilities/quest-api"
+import { useState } from "react"
 
 interface Props {
   quest: AcceptedQuest,
   setActiveSlide: (taskIdx: number) => void,
-  handleUnaccept: () => void,
+  handleUnaccept: () => Promise <void>,
 }
 
 const headerStyle = "text-center text-xl uppercase font-black tracking-wider mt-8 mb-2"
 
 
 export default function StarterSlide({quest, setActiveSlide, handleUnaccept}: Props) {
+  const [unaccepting, setUnaccepting] = useState(false)
   const isCompleted = quest.taskProgress.every(task => task)
   const overviewList = quest.taskProgress.map((task, idx) => 
     <>
@@ -37,10 +39,18 @@ export default function StarterSlide({quest, setActiveSlide, handleUnaccept}: Pr
         {isCompleted ? "Review Quest" : "Start Quest"}
       </button>
       <button 
-        className="bg-red-400 mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
-        onClick={handleUnaccept} 
+        className={`${unaccepting ? "bg-gray-400" : "bg-red-400"} mt-3 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold`}
+        disabled={unaccepting}
+        onClick={async () => {
+          setUnaccepting(true);
+          try {
+            await handleUnaccept()
+          } finally {
+            setUnaccepting(false)
+          }
+        }} 
       >
-        Unaccept Quest
+        {unaccepting ? "Unaccepting Quest..." : "Unaccept Quest"}
       </button>
     </>
   )

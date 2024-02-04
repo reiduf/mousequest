@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 export default function NewQuestForm() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("")
+  const [submitting, setSubmitting] = useState(false)
   const [questDesc, setQuestDesc] = useState("")
   const [tags, setTags] = useState({
     kids: false,
@@ -55,8 +56,13 @@ export default function NewQuestForm() {
       tags,
       tasks,
     }
-    const newQuestId = await questService.createQuest(questData);
-    navigate(`/quests/${newQuestId}`)
+    setSubmitting(true)
+    try {
+      const newQuestId = await questService.createQuest(questData);
+      navigate(`/quests/${newQuestId}`)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -104,12 +110,14 @@ export default function NewQuestForm() {
         <AddTaskForm addTask={addTask} />
         {tasks.length >= 3 && 
           <button 
-            className="bg-mq-purple px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest w-1/2 mb-8 mx-auto font-bold" 
+            className={`${submitting ? "bg-gray-400" : "bg-mq-purple"} px-7 py-2 text-white rounded-sm text-sm uppercase tracking-widest w-1/2 mb-8 mx-auto font-bold`} 
             onClick={handleCreate}
+            disabled={submitting}
           >
-            Create Quest
+            {submitting ? "Submitting Quest..." : "Create Quest" }
           </button>
         }
+        
         <NewQuestTaskList deleteTask={deleteTask} tasks={tasks}/>
       </div>
     </main>

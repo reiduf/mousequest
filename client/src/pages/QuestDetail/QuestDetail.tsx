@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import * as questService from "../../utilities/quest-api"
 import { Quest } from "../../utilities/quest-api";
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 
 
 
@@ -14,6 +15,7 @@ export default function QuestDetail() {
   const [quest, setQuest] = useState<Quest | null>(null);
   const [userLiked, setUserLiked] = useState(false);
   const [userAccepted, setUserAccepted] = useState(false);
+  const [accepting, setAccepting] = useState(false);
   const navigate = useNavigate();
     
   
@@ -31,10 +33,22 @@ export default function QuestDetail() {
   }, [questId])
 
   if (!quest) {
-    return <main>Loading...</main>
+    return (
+      <main className="h-screen mq-bg">
+        <h1 className="text-center text-5xl uppercase font-black tracking-wider mt-8 mb-2">Quest Details</h1>
+        <Loader />
+      </main>
+    )
   }
 
   async function handleLike() {
+    if (!quest) return;
+    const fakeQuest = {
+      ...quest,
+      likes: userLiked ? quest.likes - 1 : quest.likes + 1, 
+    }
+    setQuest(fakeQuest)
+    setUserLiked(!userLiked)
     const res = await questService.updateLikes(questId!);
     const newQuest = res.quest
     setUserLiked(res.userLiked)
@@ -42,8 +56,13 @@ export default function QuestDetail() {
   }
 
   async function handleAccept() {
-    await questService.acceptQuest(questId!);
-    navigate('/quests/accepted-quests');
+    setAccepting(true);
+    try {
+      await questService.acceptQuest(questId!);
+      navigate('/quests/accepted-quests');
+    } finally {
+      setAccepting(false);
+    }
   }
 
   // "as keyof ..." for ts key type clarifcation
@@ -87,9 +106,7 @@ export default function QuestDetail() {
         </div>
 
         {/* gradient line wrapper */}
-        <div className="h-[0.65rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col justify-end">
-          <div className="h-[0.45rem] bg-mq-boring"></div>
-        </div>
+        <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col justify-end"></div>
 
         {/* Gray details section */}
         <div className="bg-mq-boring h-[35rem] flex flex-col items-center px-5">
@@ -118,10 +135,10 @@ export default function QuestDetail() {
 
           {!userAccepted ?
            <button 
-            className="bg-gradient-to-b breathe from-mq-purple to-mq-blue mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold"
+            className={`${accepting ? "bg-gray-400" : "bg-gradient-to-b from-mq-purple to-mq-blue breathe"}  mt-7 px-7 mb-[40rem] md:max-w-[15rem] py-2 text-white rounded-md text-sm uppercase tracking-widest w-1/2 mx-auto font-bold`}
             onClick={handleAccept} 
             >
-            Accept Quest
+            {accepting ? "Accepting Quest..." : "Accept Quest"}
           </button>
           :
            <button 
