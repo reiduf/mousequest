@@ -28,10 +28,10 @@ export default function NewQuestForm() {
   });
   const navigate = useNavigate();
 
-  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(name: string, checked: boolean) {
     const newTags = {
       ...tags,
-      [evt.target.name]: evt.target.checked
+      [name]: checked
     }
     setTags(newTags);
   }

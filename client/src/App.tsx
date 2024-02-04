@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, Navigate } from 'react-router-dom';
 import { getUser } from "./utilities/users-service";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import CreateQuest from './pages/CreateQuest/CreateQuest';
@@ -11,6 +11,7 @@ import Logo from "./assets/logo-mobile.svg?react"
 import QuestDetail from "./pages/QuestDetail/QuestDetail"
 import StartQuest from "./pages/StartQuest/StartQuest"
 import ReviewQuest from './pages/ReviewQuest/ReviewQuest';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Link className="py-2" to="/quests"><Logo /></Link>
           </header>
           <Routes>
+            <Route path="/" element={<Navigate to="/quests" replace/>} />
             <Route path="/quests" element={<FindQuests />} />
             <Route path="/quests/:questId" element={<QuestDetail />} />
             <Route path="/quests/new" element={<CreateQuest />} />
@@ -33,10 +35,21 @@ function App() {
             <Route path="/myprofile" element={<MyProfile user={user} />} />
             <Route path="/quests/accepted-quests/:questId" element={<StartQuest />} />
             <Route path="/quests/completed-quests/:questId" element={<ReviewQuest />} />
+            <Route 
+              path="*"
+              element={<NotFoundPage />}
+            />
           </Routes>
         </>
         :
-        <AuthPage setUser={setUser} />
+        <Routes>
+          <Route path="/" element={<AuthPage setUser={setUser} />}/>
+          <Route 
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
+        </Routes>
+        
       }
     </main>
   );

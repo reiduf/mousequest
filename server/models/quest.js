@@ -23,6 +23,7 @@ const questSchema = new Schema({
     ca: { type: Boolean, default: false },
     disneyland: { type: Boolean, default: false },
     short: { type: Boolean, default: false },
+    long: { type: Boolean, default: false },
     easy: { type: Boolean, default: false },
     hard: { type: Boolean, default: false },
     mickeys: { type: Boolean, default: false },
