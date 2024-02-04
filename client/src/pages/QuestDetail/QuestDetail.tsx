@@ -50,7 +50,7 @@ export default function QuestDetail() {
   const tagsList = Object.keys(quest.tags).filter(tag => quest.tags[tag as keyof Quest["tags"]]).map(tag => 
         <p 
           key={tag}
-          className="bg-mq-purple p-1 cursor-pointer px-3 rounded-md inline-flex m-1 justify-center gap-2 uppercase text-sm text-white font-extrabold tracking-wide"
+          className="bg-mq-purple p-1 px-3 rounded-md inline-flex m-1 justify-center gap-2 uppercase text-sm text-white font-extrabold tracking-wide"
         >{tag}</p>
         )
 

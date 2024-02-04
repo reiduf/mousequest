@@ -64,6 +64,7 @@ export default function NewQuestForm() {
       
       <label className="font-black uppercase tracking-wider mb-2 mt-4" htmlFor="">1. Add Quest Title <span className="text-red-400 font-normal">*</span></label>
       <input 
+        maxLength="35"
         required
         placeholder="Quest title..." 
         className="font-bold p-3 mb-3 text-center rounded-md w-full 2xl:w-1/3 md:w-1/2" 
@@ -71,6 +72,7 @@ export default function NewQuestForm() {
         value={title}
         onChange={(evt) => setTitle(evt.target.value)}
       />
+      <p className="text-[0.65rem] uppercase mt-[-0.8rem] w-full 2xl:w-1/3 md:w-1/2 px-1 text-right">{title.length} / 35 max</p>
 
       <label className="font-black uppercase tracking-wider my-3 mb-2" htmlFor="">2. Add a Description for your quest <span className="text-red-400 font-normal">*</span></label>
       <textarea 
