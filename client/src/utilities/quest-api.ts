@@ -3,8 +3,8 @@ const BASE_URL = '/api/quests'
 
 
 
-export async function createQuest(quest: NewQuest): Promise<void> {
-  return sendRequest(`${BASE_URL}/new`, 'POST', quest)
+export async function createQuest(quest: FormData): Promise<void> {
+  return sendRequest(`${BASE_URL}/new`, 'POST', quest, true)
 }
 
 export async function getMostPopQuests(): Promise<Quest[]> {
@@ -56,25 +56,6 @@ export function getLikedQuests(): Promise<Quest[]> {
 }
 
 // types
-interface NewQuest {
-  title: string,
-  description: string,
-  tags: {
-    kids: boolean,
-    adults: boolean,
-    families: boolean,
-    ca: boolean,
-    disneyland: boolean,
-    short: boolean,
-    easy: boolean,
-    hard: boolean,
-    mickeys: boolean,
-    queue: boolean,
-    riddles: boolean,
-  },
-  tasks: Task[],
-}
-
 export interface Quest {
   _id: string,
   title: string,
@@ -98,6 +79,7 @@ export interface Quest {
   author: {
     name: string,
   },
+  imageUrl: string,
 }
 
 export interface Task {

@@ -47,6 +47,10 @@ const questSchema = new Schema({
       return Object.keys(this.tags).filter(tag => this.tags[tag]).join(" ")
     }
   },
+  imageUrl: {
+    type: String,
+    required: false,
+  }
 }, {
   timestamps: true,
 });

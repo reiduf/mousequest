@@ -1,12 +1,14 @@
 const express = require('express')
 const router = express.Router();
 const questsCtrl = require('../../controllers/api/quests');
+const upload = require('multer')();
+
 
 //all got to /quests/...
 router.get('/', questsCtrl.search)
 router.get('/liked-quests', questsCtrl.getLikedQuests)
 router.get('/created-quests', questsCtrl.getCreatedQuests)
-router.post('/new', questsCtrl.create);
+router.post('/new', upload.single('photo'), questsCtrl.create);
 router.get('/mostpopular', questsCtrl.getMostPopularQuest);
 router.post('/accepted-quests', questsCtrl.acceptQuest);
 router.get('/accepted-quests', questsCtrl.getAcceptedQuests);

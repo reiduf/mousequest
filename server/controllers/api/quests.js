@@ -1,6 +1,7 @@
 const AcceptedQuest = require('../../models/acceptedQuest');
 const Quest = require('../../models/quest');
 const User = require('../../models/user')
+const uploadFile = require('../../config/upload-file');
 
 module.exports = {
   create,
@@ -20,8 +21,16 @@ module.exports = {
 
 async function create(req, res) {
   try {
+    if (req.file) {
+      const photoURL = await uploadFile(req.file);
+      req.body.imageUrl = photoURL
+    }
     console.log("User", req.user);
     req.body.author = req.user._id
+    const tags = JSON.parse(req.body.tags);
+    const tasks = JSON.parse(req.body.tasks);
+    req.body.tags = tags;
+    req.body.tasks = tasks;
     const quest = await Quest.create(req.body);
     console.log("Quest", quest);
     res.json(quest._id);
