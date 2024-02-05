@@ -10,7 +10,7 @@ export default function CreatedQuest({questData}: Props) {
   return (
     <Link to={`/quests/${questData._id}`}>
       <li className="bg-white p-4 flex gap-4 rounded-md hover:scale-[1.01] cursor-pointer transition duration-150 shadow-md">
-        <div className="w-32 h-32 bg-no-repeat bg-cover bg-center rounded-md" style={{backgroundImage: `url('${castleUrl}')`}}></div>
+        <div className="w-32 h-32 bg-no-repeat bg-cover bg-center rounded-md" style={{backgroundImage: `url('${questData.imageUrl ?? castleUrl}')`}}></div>
         <div className=" w-[60%] flex flex-col justify-between">
           <h2 className="uppercase font-black">{questData.title}</h2>
           <div>
