@@ -23,13 +23,10 @@ This project offered great new challenges: my first project utilizing TypeScript
 
 **Server:** Mongoose, Express, Node
 
-**Why this tech stack**:
+**Why this tech stack**: TypeScript, the MERN stack, and TailwindCSS are widely used technologies at modern companies. I want to show employers that I can hit the ground running when I join their development team!
 
 
-## Demo
-
-![App Screenshot](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG5kd3MxN2YwZTdtNDBzc215Nm14cHp0Mmo2anZxZmUwNmh4ZWhpaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/21UbIzdRV734x1NnaF/giphy.gif)
-
+## Live Site
 Please click [here](https://mousequest.dufrene.dev/) to try out MouseQuest!
 
 ## Next Steps
