@@ -1,5 +1,4 @@
 import castleUrl from '../../img/castle.webp';
-import picoUrl from '../../img/pico.jpg';
 import * as userService from '../../utilities/users-service'
 import * as questService from "../../utilities/quest-api"
 import { Quest } from '../../utilities/quest-api';
@@ -58,10 +57,8 @@ export default function MyProfile({user}: Props) {
   
 return (
   <main className="bg-mq-boring overflow-scroll md:h-screen h-[140vh]">
-    <div className="relative flex justify-center items-center w-full mx-auto bg-center lg:h-80 h-60 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}>
-      <div className="lg:w-48 lg:h-48 h-32 w-32 bg-no-repeat bg-cover border-[3px] border-white rounded-full absolute bottom-[-5rem] lg:bottom-[-6rem]" style={{backgroundImage: `url('${picoUrl}')`}} ></div>          
-    </div>
-    <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col mb-28 justify-end"></div>
+    <div className="relative flex justify-center items-center w-full mx-auto bg-center lg:h-80 h-60 bg-no-repeat bg-cover" style={{backgroundImage: `url('${castleUrl}')`}}></div>
+    <div className="h-[0.35rem] bg-gradient-to-r from-mq-purple to-mq-blue flex flex-col mb-8 justify-end"></div>
     
     <section className="px-5">
       <h1 className="text-center font-semibold text-3xl">{user.name}</h1>

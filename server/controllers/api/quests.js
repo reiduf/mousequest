@@ -41,7 +41,7 @@ async function create(req, res) {
 }
 
 async function getMostPopularQuest(req, res) {
-  const popQuests = await Quest.find({}).populate('author').limit(12).exec();
+  const popQuests = await Quest.find({}).sort({ likes: 'descending' }).populate('author').limit(12).exec();
   
   res.json(popQuests);
 }
