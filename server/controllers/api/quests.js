@@ -70,7 +70,7 @@ async function getAcceptedQuestById(req, res) {
 
 async function getAcceptedQuests(req, res) {
   try {
-    const acceptedQuests = await AcceptedQuest.find({ user: req.user._id }).populate('quest').exec()
+    const acceptedQuests = (await AcceptedQuest.find({ user: req.user._id }).populate('quest').exec()).filter(acceptedQuest => !!acceptedQuest.quest)
     const activeQuests = acceptedQuests.filter(quest => !quest.isComplete)
     const completedQuests = acceptedQuests.filter(quest => quest.isComplete)
     const response = {
